@@ -1,3 +1,5 @@
+console.log("Script cargado correctamente ✅");
+
 // ---------- Inicialización ----------
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
@@ -119,5 +121,22 @@ function initMap() {
     icon: { url: "img/logo.png", scaledSize: new google.maps.Size(48, 48) }
   });
 }
+
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+  try {
+    AOS.init({ once: true, duration: 600, offset: 80 });
+    setYear();
+    preloadHeroImages();
+  } catch (err) {
+    console.error("Error en carga:", err);
+  }
+});
+
+// Fallback para asegurarse de que el loader se oculte aunque falle algo
+setTimeout(() => {
+  document.body.classList.add('loaded');
+}, 2000);
+
 // Hacerla global para callback de Maps:
 window.initMap = initMap;
