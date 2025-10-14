@@ -22,11 +22,11 @@ body{
 
 /* ---------- Loader ---------- */
 #loader{
-  position:fixed;inset:0;background:var(--blanco);
-  display:flex;align-items:center;justify-content:center;
-  z-index:2000;transition:opacity .3s ease;
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background:#fff; z-index:2000; opacity:1; transition:opacity .3s ease, visibility .3s ease;
 }
-body.loaded #loader{opacity:0;pointer-events:none}
+body.loaded #loader{ opacity:0; visibility:hidden; pointer-events:none; }
+
 
 /* ---------- Logo fijo ---------- */
 .logo-fixed{position:fixed;top:10px;left:20px;z-index:1001}
