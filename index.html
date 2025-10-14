@@ -80,7 +80,7 @@
       <h2>Nuestros Circuitos</h2>
       <div class="cards">
         <article class="card">
-          <img src="img/alto1.png" alt="Circuito Alto en el río Aluminé">
+          <img src="img/alto.png" alt="Circuito Alto en el río Aluminé">
           <div class="card-content">
             <h3>Circuito Alto</h3>
             <p>El recorrido más popular, lleno de adrenalina y emoción.</p>
@@ -135,25 +135,16 @@
     </div>
   </div>
 
-    <!-- Botón subir -->
-  <button id="btnUp" class="visualmente-oculto"><i class="fas fa-arrow-up"></i></button>
+  <!-- Botón subir -->
+  <button id="btnUp" class="visually-hidden"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- 🔒 Failsafe: ocultar el loader SIEMPRE, incluso si falla el JS externo -->
-  <script>
-    // Si el DOM cargó, saco el loader para evitar pantalla blanca
-    document.addEventListener('DOMContentLoaded', function () {
-      document.body.classList.add('loaded');
-    });
-  </script>
-
-  <!-- Librerías y tu JS -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="script.js" defer></script>
 
-  <!-- Google Maps (comentar correctamente hasta configurar la API Key) -->
+  <!-- Si aún no usás Google Maps, dejalo así comentado correctamente -->
   <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script> -->
 
   <noscript>Necesitas habilitar JavaScript para ver esta web correctamente.</noscript>
 </body>
 </html>
-
