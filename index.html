@@ -5,29 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rafting en el Río Aluminé | Abra Ancha Patagonia</title>
 
-  <!-- SEO base -->
+  <!-- SEO -->
   <meta name="description" content="Vive la experiencia de rafting en el río Aluminé con Abra Ancha Rafting. Aventura, naturaleza y guías certificados en la Patagonia Argentina." />
   <meta name="keywords" content="Rafting, Patagonia, Aluminé, Río, Aventura, Turismo, Abra Ancha" />
   <meta name="author" content="César Fiad" />
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Abra Ancha Rafting | Patagonia Argentina" />
   <meta property="og:description" content="Rafting en el río Aluminé con guías certificados." />
   <meta property="og:image" content="img/abraanchapng.png" />
   <meta property="og:type" content="website" />
 
-  <!-- Icons / Manifest -->
+  <!-- Iconos -->
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="img/abraanchapng.png" />
   <link rel="apple-touch-icon" href="img/abraanchapng.png" />
 
-  <!-- Libs -->
+  <!-- Librerías -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 
-  <!-- Styles -->
+  <!-- Estilos -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- Loader -->
   <div id="loader" aria-hidden="true">
@@ -39,18 +39,18 @@
     <img src="img/abraanchapng.png" alt="Logo Abra Ancha Rafting" loading="eager">
   </a>
 
-  <!-- Header / Hero -->
-  <header class="hero" id="inicio" role="banner" aria-label="Portada Abra Ancha">
+  <!-- Hero -->
+  <header class="hero" id="inicio">
     <div class="overlay">
       <h1>Abra Ancha Rafting</h1>
       <p>Aventuras en el corazón del río Aluminé - Patagonia Argentina</p>
     </div>
   </header>
 
-  <!-- Menú superior -->
-  <nav class="navbar" aria-label="Navegación principal">
+  <!-- Navbar -->
+  <nav class="navbar">
     <div class="nav-container">
-      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
       <ul id="nav-menu">
@@ -64,12 +64,11 @@
     </div>
   </nav>
 
-  <main id="main">
+  <main>
     <!-- Quiénes somos -->
-    <section id="quienes-somos" class="section" data-aos="fade-up" aria-labelledby="qs-title">
-      <h2 id="qs-title">¿Quiénes Somos?</h2>
+    <section id="quienes-somos" class="section" data-aos="fade-up">
+      <h2>¿Quiénes Somos?</h2>
       <p>Somos un equipo de guías certificados con años de experiencia en rafting y turismo de aventura. En Abra Ancha Rafting ofrecemos experiencias seguras, divertidas y llenas de adrenalina en uno de los ríos más emblemáticos de la Patagonia: el Río Aluminé.</p>
-
       <video controls playsinline poster="img/fondo.jpg" class="video-presentacion">
         <source src="video/videoabraancha.mp4" type="video/mp4">
         Tu navegador no soporta el video.
@@ -77,11 +76,11 @@
     </section>
 
     <!-- Circuitos -->
-    <section id="circuitos" class="section bg-light" data-aos="fade-up" aria-labelledby="cir-title">
-      <h2 id="cir-title">Nuestros Circuitos</h2>
+    <section id="circuitos" class="section bg-light" data-aos="fade-up">
+      <h2>Nuestros Circuitos</h2>
       <div class="cards">
         <article class="card">
-          <img src="img/alto.JPEG" alt="Circuito Alto en el río Aluminé" loading="lazy" decoding="async" />
+          <img src="img/alto4.jpg" alt="Circuito Alto en el río Aluminé">
           <div class="card-content">
             <h3>Circuito Alto</h3>
             <p>El recorrido más popular, lleno de adrenalina y emoción.</p>
@@ -89,7 +88,7 @@
           </div>
         </article>
         <article class="card">
-          <img src="img/bajo.JPEG" alt="Circuito Abra Ancha para familias" loading="lazy" decoding="async" />
+          <img src="img/bajo3.jpg" alt="Circuito Abra Ancha para familias">
           <div class="card-content">
             <h3>Circuito Abra Ancha</h3>
             <p>Ideal para disfrutar en familia.</p>
@@ -100,27 +99,21 @@
     </section>
 
     <!-- Galería -->
-    <section id="galeria" class="section" data-aos="fade-up" aria-labelledby="gal-title">
-      <h2 id="gal-title">Experiencias en el Río Aluminé</h2>
+    <section id="galeria" class="section" data-aos="fade-up">
+      <h2>Experiencias en el Río Aluminé</h2>
       <div class="cards cards-gallery">
-        <figure class="card">
-          <img src="img/exp1.jpg" alt="Balsa navegando rápidos" loading="lazy" decoding="async">
-        </figure>
-        <figure class="card">
-          <img src="img/exp4.png" alt="Equipo listo para descender" loading="lazy" decoding="async">
-        </figure>
-        <figure class="card">
-          <img src="img/exp5.png" alt="Guía indicando maniobras" loading="lazy" decoding="async">
-        </figure>
+        <figure class="card"><img src="img/exp1.jpg" alt="Balsa navegando rápidos"></figure>
+        <figure class="card"><img src="img/exp4.png" alt="Equipo listo para descender"></figure>
+        <figure class="card"><img src="img/exp5.png" alt="Guía indicando maniobras"></figure>
       </div>
     </section>
 
     <!-- Ubicación -->
-    <section id="ubicacion" class="section" data-aos="fade-up" aria-labelledby="ubi-title">
-      <h2 id="ubi-title">Ubicación</h2>
-      <p>Nos encontramos en la zona de <strong>Abra Ancha</strong>, a pocos kilómetros de la localidad de Aluminé, en el corazón de la Patagonia Argentina.</p>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Abra+Ancha+Rafting,+Neuquén" target="_blank" rel="noopener" class="btn-map">Cómo llegar</a>
-      <div id="map" role="img" aria-label="Mapa de ubicación Abra Ancha Rafting"></div>
+    <section id="ubicacion" class="section" data-aos="fade-up">
+      <h2>Ubicación</h2>
+      <p>Nos encontramos en <strong>Abra Ancha</strong>, a pocos kilómetros de Aluminé, Patagonia Argentina.</p>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Abra+Ancha+Rafting,+Neuquén" target="_blank" class="btn-map">Cómo llegar</a>
+      <div id="map"></div>
     </section>
   </main>
 
@@ -129,30 +122,26 @@
     <p>© <span id="year"></span> Abra Ancha Rafting | Diseñado por @CesarFiad</p>
   </footer>
 
-  <!-- Botonera flotante desplegable -->
-  <div class="social-toggle" aria-live="polite">
-    <span class="contact-tooltip" aria-hidden="true">💬 Contáctanos</span>
-    <button id="toggle-btn" aria-expanded="false" aria-controls="social-list" aria-label="Abrir contactos"><i class="fas fa-share-alt"></i></button>
+  <!-- Botonera flotante -->
+  <div class="social-toggle">
+    <span class="contact-tooltip">💬 Contáctanos</span>
+    <button id="toggle-btn"><i class="fas fa-share-alt"></i></button>
     <div class="social-floating" id="social-list" hidden>
-      <a href="https://facebook.com/abraancharafing" class="fb" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-      <a href="https://instagram.com/abraancharafing" class="ig" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-      <a href="tel:+5492990000000" class="ph" title="Llamar"><i class="fas fa-phone" aria-hidden="true"></i></a>
-      <a href="mailto:info@abraancharafing.com" class="em" title="Correo"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-      <a href="https://wa.me/5492990000000" class="wp" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+      <a href="https://facebook.com/abraancharafing" class="fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/abraancharafing" class="ig" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="tel:+5492990000000" class="ph"><i class="fas fa-phone"></i></a>
+      <a href="mailto:info@abraancharafing.com" class="em"><i class="fas fa-envelope"></i></a>
+      <a href="https://wa.me/5492990000000" class="wp" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
   </div>
 
-  <!-- Botón ir arriba -->
-  <button id="btnUp" class="visually-hidden" aria-label="Volver arriba"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+  <!-- Botón subir -->
+  <button id="btnUp" class="visually-hidden"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- Libs -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-
-  <!-- Tu JS -->
   <script src="script.js" defer></script>
-
-  <!-- Google Maps (usa tu API key) -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAmNrwJuKCJPoOiR9bPZCQxaxvhH4tXHc&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
 
   <noscript>Necesitas habilitar JavaScript para ver esta web correctamente.</noscript>
 </body>
