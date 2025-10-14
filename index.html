@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abra Ancha Rafting | Patagonia Argentina</title>
 
-  <!-- Íconos -->
+  <!-- META -->
+  <meta name="description" content="Rafting en el Río Aluminé - Patagonia Argentina. Aventura, naturaleza y seguridad con guías certificados.">
+  <meta name="keywords" content="Rafting, Patagonia, Aluminé, Río, Aventura, Turismo, Abra Ancha">
+  <meta name="author" content="César Fiad">
+
+  <!-- ÍCONOS Y ANIMACIONES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
-  <!-- Estilos -->
+  <!-- ESTILOS -->
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="img/logo.png" />
+  <link rel="icon" href="img/abraanchapng.png" />
 </head>
-
 <body>
 
   <!-- LOGO FIJO -->
@@ -21,7 +26,7 @@
   </a>
 
   <!-- HEADER -->
-  <header class="hero">
+  <header class="hero" id="inicio">
     <div class="overlay">
       <h1>Abra Ancha Rafting</h1>
       <p>Aventuras en el corazón del río Aluminé - Patagonia Argentina</p>
@@ -37,17 +42,15 @@
     <a href="https://wa.me/5492990000000" class="wp" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
   </div>
 
+  <!-- BOTÓN WHATSAPP MÓVIL -->
+  <a href="https://wa.me/5492990000000" class="wp-float" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
   <!-- NAV -->
   <nav class="navbar">
     <div class="nav-container">
-      <!-- Botón hamburguesa -->
       <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
-
-      <!-- Menú principal -->
       <ul id="nav-menu">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#quienes-somos">Quiénes Somos</a></li>
@@ -59,17 +62,18 @@
   </nav>
 
   <!-- QUIÉNES SOMOS -->
-  <section id="quienes-somos" class="section">
+  <section id="quienes-somos" class="section" data-aos="fade-up">
     <h2>¿Quiénes Somos?</h2>
-    <p>
-      Somos un equipo de guías certificados con años de experiencia en rafting y turismo de aventura.
-      En Abra Ancha Rafting ofrecemos experiencias seguras, divertidas y llenas de adrenalina
-      en uno de los ríos más emblemáticos de la Patagonia: el Río Aluminé.
-    </p>
+    <p>Somos un equipo de guías certificados con años de experiencia en rafting y turismo de aventura. En Abra Ancha Rafting ofrecemos experiencias seguras, divertidas y llenas de adrenalina en uno de los ríos más emblemáticos de la Patagonia: el Río Aluminé.</p>
+
+    <video controls poster="img/miniatura.jpg" class="video-presentacion">
+      <source src="video/presentacion.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
   </section>
 
   <!-- CIRCUITOS -->
-  <section id="circuitos" class="section bg-light">
+  <section id="circuitos" class="section bg-light" data-aos="fade-up">
     <h2>Nuestros Circuitos</h2>
     <div class="cards">
       <div class="card">
@@ -77,28 +81,35 @@
         <div class="card-content">
           <h3>Circuito Alto</h3>
           <p>El recorrido más popular, lleno de adrenalina y emoción.</p>
-          <span>Dificultad: Clase II - III</span>
+          <span>Dificultad: Clase III - IV</span>
         </div>
       </div>
-
       <div class="card">
         <img src="img/bajo.JPEG" alt="Circuito Abra Ancha" />
         <div class="card-content">
           <h3>Circuito Abra Ancha</h3>
           <p>Ideal para disfrutar en familia.</p>
-          <span>Dificultad: Clase III - IV</span>
+          <span>Dificultad: Clase II - III</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- GALERÍA -->
+  <section id="galeria" class="section" data-aos="fade-up">
+    <h2>Experiencias en el Río Aluminé</h2>
+    <div class="cards">
+      <div class="card"><img src="img/exp1.jpg" alt="Rafting 1"></div>
+      <div class="card"><img src="img/exp2.jpg" alt="Rafting 2"></div>
+      <div class="card"><img src="img/exp3.jpg" alt="Rafting 3"></div>
+    </div>
+  </section>
+
   <!-- UBICACIÓN -->
-  <section id="ubicacion" class="section">
+  <section id="ubicacion" class="section" data-aos="fade-up">
     <h2>Ubicación</h2>
-    <p>
-      Nos encontramos en la zona de <strong>Abra Ancha Rafting</strong>, a pocos kilómetros de la localidad de Aluminé, 
-      en el corazón de la Patagonia Argentina.
-    </p>
+    <p>Nos encontramos en la zona de <strong>Abra Ancha</strong>, a pocos kilómetros de la localidad de Aluminé, en el corazón de la Patagonia Argentina.</p>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Abra+Ancha+Rafting,+Neuquén" target="_blank" class="btn-map">Cómo llegar</a>
     <div id="map"></div>
   </section>
 
@@ -107,8 +118,35 @@
     <p>© 2025 Abra Ancha Rafting | Diseñado por César Fiad</p>
   </footer>
 
-  <!-- GOOGLE MAPS -->
+  <!-- JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
   <script>
+    // --- FONDO CAMBIANTE ---
+    const hero = document.querySelector('.hero');
+    const fondos = ['img/fondo.jpg', 'img/alto4.jpg', 'img/bajo3.jpg'];
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % fondos.length;
+      hero.style.background = `url('${fondos[i]}') no-repeat center center/cover`;
+    }, 5000);
+
+    // --- MENÚ HAMBURGUESA ---
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    menuToggle.addEventListener("click", () => navMenu.classList.toggle("show"));
+
+    // --- EFECTO CONTACTO ---
+    const linkContacto = document.getElementById("link-contacto");
+    const social = document.querySelector(".social-floating");
+    linkContacto.addEventListener("click", (e) => {
+      e.preventDefault();
+      social.classList.add("destacar");
+      setTimeout(() => social.classList.remove("destacar"), 2000);
+    });
+
+    // --- MAPA GOOGLE ---
     function initMap() {
       const abraAncha = { lat: -39.2398, lng: -70.9096 };
       const map = new google.maps.Map(document.getElementById("map"), {
@@ -122,42 +160,15 @@
           { featureType: "road", elementType: "geometry", stylers: [{ color: "#b2dfdb" }] },
         ],
       });
-
       new google.maps.Marker({
         position: abraAncha,
         map,
         title: "Abra Ancha Rafting",
-        icon: {
-          url: "img/logo.png",
-          scaledSize: new google.maps.Size(50, 50),
-        },
+        icon: { url: "img/logo.png", scaledSize: new google.maps.Size(50, 50) },
       });
     }
   </script>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAmNrwJuKCJPoOiR9bPZCQxaxvhH4tXHc&callback=initMap"></script>
-
-  <!-- MENÚ HAMBURGUESA -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuToggle = document.getElementById("menu-toggle");
-      const navMenu = document.getElementById("nav-menu");
-      menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("show");
-      });
-    });
-  </script>
-
-  <!-- EFECTO CONTACTO -->
-  <script>
-    const linkContacto = document.getElementById("link-contacto");
-    const social = document.querySelector(".social-floating");
-    linkContacto.addEventListener("click", (e) => {
-      e.preventDefault();
-      social.classList.add("destacar");
-      setTimeout(() => social.classList.remove("destacar"), 2000);
-    });
-  </script>
-
 </body>
 </html>
