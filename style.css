@@ -261,3 +261,119 @@ footer {
     right: 30px;
   }
 }
+
+/* ---------- VIDEO PRESENTACIÓN ---------- */
+.video-presentacion {
+  display: block;
+  margin: 25px auto;         /* lo centra horizontalmente */
+  width: 380px;              /* más ancho */
+  height: 480px;             /* un poco menos alto */
+  border-radius: 12px;       /* esquinas redondeadas */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  object-fit: cover;         /* evita deformación */
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+  .video-presentacion {
+    width: 280px;
+    height: 360px;
+  }
+}
+
+
+/* ===== MENÚ FLOTANTE DESPLEGABLE ===== */
+.social-toggle {
+  position: fixed;
+  bottom: 80px; /* ⬆ sube el botón un poco */
+  left: 25px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BOTÓN PRINCIPAL */
+#toggle-btn {
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+#toggle-btn:hover {
+  background-color: #1565c0;
+  transform: scale(1.1);
+}
+
+/* TOOLTIP “CONTÁCTANOS” */
+.contact-tooltip {
+  background: #1565c0;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+/* Aparece al pasar el mouse por el botón */
+.social-toggle:hover .contact-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ÍCONOS DE REDES */
+.social-floating {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-floating.show {
+  display: flex;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.social-floating a {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.social-floating a:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* Colores */
+.fb { background-color: #1877f2; }
+.ig { background-color: #e4405f; }
+.ph { background-color: #1565c0; }
+.em { background-color: #009688; }
+.wp { background-color: #25d366; }
