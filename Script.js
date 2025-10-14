@@ -2,11 +2,23 @@ console.log("Script cargado correctamente ✅");
 
 // ---------- Inicialización ----------
 window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-  AOS.init({ once: true, duration: 600, offset: 80 });
-  setYear();
-  preloadHeroImages();
+  try {
+    // Oculta el loader
+    document.body.classList.add('loaded');
+
+    // Inicializa animaciones y funciones
+    AOS.init({ once: true, duration: 600, offset: 80 });
+    setYear();
+    preloadHeroImages();
+  } catch (err) {
+    console.error("Error en carga:", err);
+  }
 });
+
+// ---------- Fallback para asegurar que el loader desaparezca ----------
+setTimeout(() => {
+  document.body.classList.add('loaded');
+}, 2000);
 
 // ---------- Año dinámico ----------
 function setYear() {
@@ -21,7 +33,6 @@ let fondoIndex = 0;
 
 function preloadHeroImages() {
   fondos.forEach(src => { const im = new Image(); im.src = src; });
-  // arranco el cambio de fondo
   setInterval(() => {
     fondoIndex = (fondoIndex + 1) % fondos.length;
     hero.style.backgroundImage = `url('${fondos[fondoIndex]}')`;
@@ -38,7 +49,6 @@ if (menuToggle && navMenu) {
     menuToggle.setAttribute('aria-expanded', String(open));
   });
 
-  // cerrar al hacer click en un enlace
   navMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       navMenu.classList.remove('show');
@@ -66,7 +76,8 @@ const linkContacto = document.getElementById('link-contacto');
 if (toggleBtn && socialMenu) {
   toggleBtn.addEventListener('click', () => {
     const hidden = socialMenu.hasAttribute('hidden');
-    if (hidden) socialMenu.removeAttribute('hidden'); else socialMenu.setAttribute('hidden', '');
+    if (hidden) socialMenu.removeAttribute('hidden');
+    else socialMenu.setAttribute('hidden', '');
     toggleBtn.setAttribute('aria-expanded', String(hidden));
   });
 }
@@ -74,12 +85,11 @@ if (toggleBtn && socialMenu) {
 if (linkContacto && socialMenu) {
   linkContacto.addEventListener('click', (e) => {
     e.preventDefault();
-    // abrir/cerrar panel
     const hidden = socialMenu.hasAttribute('hidden');
-    if (hidden) socialMenu.removeAttribute('hidden'); else socialMenu.setAttribute('hidden', '');
-    // subir
+    if (hidden) socialMenu.removeAttribute('hidden');
+    else socialMenu.setAttribute('hidden', '');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // abrir WhatsApp con mensaje
+
     const msg = encodeURIComponent('Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios.');
     window.open(`https://wa.me/5492990000000?text=${msg}`, '_blank', 'noopener');
   });
@@ -97,7 +107,6 @@ btnUp?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoo
 
 // ---------- Google Maps ----------
 function initMap() {
-  // Coordenadas Abra Ancha aprox.
   const abraAncha = { lat: -39.2398, lng: -70.9096 };
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
@@ -122,21 +131,5 @@ function initMap() {
   });
 }
 
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-  try {
-    AOS.init({ once: true, duration: 600, offset: 80 });
-    setYear();
-    preloadHeroImages();
-  } catch (err) {
-    console.error("Error en carga:", err);
-  }
-});
-
-// Fallback para asegurarse de que el loader se oculte aunque falle algo
-setTimeout(() => {
-  document.body.classList.add('loaded');
-}, 2000);
-
-// Hacerla global para callback de Maps:
+// Hacerla global para callback de Maps
 window.initMap = initMap;
