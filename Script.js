@@ -14,7 +14,7 @@ function setYear() {
 
 // ---------- Fondo cambiante ----------
 const hero = document.querySelector('.hero');
-const fondos = ['img/fondo.jpg', 'img/alto4.JPG', 'img/bajo3.JPG'];
+const fondos = ['img/fondo.jpg', 'img/alto.png', 'img/bajo.png'];
 let fondoIndex = 0;
 
 function preloadHeroImages() {
