@@ -3,10 +3,7 @@ console.log("Script cargado correctamente ✅");
 // ---------- Inicialización ----------
 window.addEventListener('load', () => {
   try {
-    // Oculta el loader
     document.body.classList.add('loaded');
-
-    // Inicializa animaciones y funciones
     AOS.init({ once: true, duration: 600, offset: 80 });
     setYear();
     preloadHeroImages();
@@ -15,7 +12,7 @@ window.addEventListener('load', () => {
   }
 });
 
-// ---------- Fallback para asegurar que el loader desaparezca ----------
+// ---------- Fallback (asegura que el loader se quite aunque falle algo) ----------
 setTimeout(() => {
   document.body.classList.add('loaded');
 }, 2000);
@@ -57,7 +54,7 @@ if (menuToggle && navMenu) {
   });
 }
 
-// ---------- Scroll suave para anclas ----------
+// ---------- Scroll suave ----------
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const id = this.getAttribute('href');
@@ -89,7 +86,6 @@ if (linkContacto && socialMenu) {
     if (hidden) socialMenu.removeAttribute('hidden');
     else socialMenu.setAttribute('hidden', '');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
     const msg = encodeURIComponent('Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios.');
     window.open(`https://wa.me/5492990000000?text=${msg}`, '_blank', 'noopener');
   });
