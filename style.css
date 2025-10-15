@@ -158,3 +158,31 @@ footer{background:var(--azul);color:#fff;text-align:center;padding:16px 0;font-s
 
 /* ---------- Accesibilidad ---------- */
 .visually-hidden{position:fixed;inset:auto}
+
+
+.img-circuito {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.mapa-circuito {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.mapa-circuito h3 {
+  color: #0d47a1;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+.mapa-circuito h4 {
+  color: #1565c0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+

@@ -1,26 +1,26 @@
-console.log("Script cargado correctamente ✅");
+console.log("✅ Script cargado correctamente");
 
 // ---------- Inicialización ----------
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   try {
-    document.body.classList.add('loaded');          // oculta loader si aún no se ocultó
-    if (window.AOS) AOS.init({ once: true, duration: 600, offset: 80 });
+    document.body.classList.add("loaded"); // Oculta loader
+    if (window.AOS) AOS.init({ once: true, duration: 700, offset: 100 });
     setYear();
     preloadHeroImages();
   } catch (err) {
-    console.error("Error en carga:", err);
+    console.error("❌ Error al cargar la página:", err);
   }
 });
 
 // ---------- Año dinámico ----------
 function setYear() {
-  const y = document.getElementById('year');
+  const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 }
 
 // ---------- Fondo cambiante ----------
-const hero = document.querySelector('.hero');
-const fondos = ['img/fondo.jpg', 'img/alto1.png', 'img/bajo.png']; // asegúrate que EXISTAN
+const hero = document.querySelector(".hero");
+const fondos = ["img/fondo.jpg", "img/alto1.png", "img/bajo.png"];
 let fondoIndex = 0;
 
 function preloadHeroImages() {
@@ -32,74 +32,80 @@ function preloadHeroImages() {
 }
 
 // ---------- Menú responsive ----------
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.getElementById('nav-menu');
+const menuToggle = document.getElementById("menu-toggle");
+const navMenu = document.getElementById("nav-menu");
 
 if (menuToggle && navMenu) {
-  menuToggle.addEventListener('click', () => {
-    const open = navMenu.classList.toggle('show');
-    menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.addEventListener("click", () => {
+    const open = navMenu.classList.toggle("show");
+    menuToggle.setAttribute("aria-expanded", String(open));
   });
 
-  navMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navMenu.classList.remove('show');
-      menuToggle.setAttribute('aria-expanded', 'false');
+  navMenu.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => {
+      navMenu.classList.remove("show");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
 }
 
 // ---------- Scroll suave ----------
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const id = this.getAttribute('href');
+  anchor.addEventListener("click", e => {
+    const id = anchor.getAttribute("href");
     if (id && id.length > 1) {
       e.preventDefault();
       const el = document.querySelector(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
   });
 });
 
-// ---------- Botonera flotante ----------
-const toggleBtn = document.getElementById('toggle-btn');
-const socialMenu = document.getElementById('social-list');
-const linkContacto = document.getElementById('link-contacto');
+// ---------- Botonera flotante (redes sociales) ----------
+const toggleBtn = document.getElementById("toggle-btn");
+const socialMenu = document.getElementById("social-list");
+const linkContacto = document.getElementById("link-contacto");
 
 if (toggleBtn && socialMenu) {
-  toggleBtn.addEventListener('click', () => {
-    const hidden = socialMenu.hasAttribute('hidden');
-    if (hidden) socialMenu.removeAttribute('hidden'); else socialMenu.setAttribute('hidden', '');
-    toggleBtn.setAttribute('aria-expanded', String(hidden));
+  toggleBtn.addEventListener("click", () => {
+    const hidden = socialMenu.hasAttribute("hidden");
+    if (hidden) socialMenu.removeAttribute("hidden");
+    else socialMenu.setAttribute("hidden", "");
+    toggleBtn.setAttribute("aria-expanded", String(hidden));
   });
 }
 
 if (linkContacto && socialMenu) {
-  linkContacto.addEventListener('click', (e) => {
+  linkContacto.addEventListener("click", e => {
     e.preventDefault();
-    const hidden = socialMenu.hasAttribute('hidden');
-    if (hidden) socialMenu.removeAttribute('hidden'); else socialMenu.setAttribute('hidden', '');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Mostrar redes flotantes
+    const hidden = socialMenu.hasAttribute("hidden");
+    if (hidden) socialMenu.removeAttribute("hidden");
+    else socialMenu.setAttribute("hidden", "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
-    const msg = encodeURIComponent('Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios.');
-    window.open(`https://wa.me/5492990000000?text=${msg}`, '_blank', 'noopener');
+    // Abrir WhatsApp directo
+    const msg = encodeURIComponent("Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios.");
+    window.open(`https://wa.me/5492995123456?text=${msg}`, "_blank", "noopener");
   });
 }
 
-// ---------- Botón subir ----------
-const btnUp = document.getElementById('btnUp');
-window.addEventListener('scroll', () => {
+// ---------- Botón "Subir arriba" ----------
+const btnUp = document.getElementById("btnUp");
+window.addEventListener("scroll", () => {
   if (!btnUp) return;
   const show = window.scrollY > 420;
-  btnUp.classList.toggle('show', show);
-  btnUp.classList.toggle('visually-hidden', !show);
+  btnUp.classList.toggle("show", show);
 });
-btnUp?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+btnUp?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
 // ---------- Google Maps ----------
 function initMap() {
   const abraAncha = { lat: -39.2398, lng: -70.9096 };
-  const map = new google.maps.Map(document.getElementById('map'), {
+  const mapElement = document.getElementById("map");
+  if (!mapElement) return; // evita error si no hay mapa
+
+  const map = new google.maps.Map(mapElement, {
     zoom: 13,
     center: abraAncha,
     disableDefaultUI: false,
@@ -110,7 +116,7 @@ function initMap() {
       { elementType: "labels.text.fill", stylers: [{ color: "#00796b" }] },
       { elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
       { featureType: "water", elementType: "geometry.fill", stylers: [{ color: "#4fc3f7" }] },
-      { featureType: "road", elementType: "geometry", stylers: [{ color: "#b2dfdb" }] },
+      { featureType: "road", elementType: "geometry", stylers: [{ color: "#b2dfdb" }] }
     ]
   });
 
@@ -118,8 +124,6 @@ function initMap() {
     position: abraAncha,
     map,
     title: "Abra Ancha Rafting",
-    icon: { url: "img/logo.png", scaledSize: new google.maps.Size(48, 48) }
+    icon: { url: "img/abraanchapng.png", scaledSize: new google.maps.Size(48, 48) }
   });
 }
-// Hacerla global para callback de Maps
-window.initMap = initMap;

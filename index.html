@@ -20,11 +20,11 @@
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="img/abraanchapng.png" />
 
-  <!-- Librerías -->
+  <!-- Librerías externas -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 
-  <!-- Estilos -->
+  <!-- Estilos propios -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -79,6 +79,8 @@
     <section id="circuitos" class="section bg-light" data-aos="fade-up">
       <h2>Nuestros Circuitos</h2>
       <div class="cards">
+
+        <!-- CIRCUITO ALTO -->
         <article class="card">
           <img src="img/alto1.png" alt="Circuito Alto en el río Aluminé">
           <div class="card-content">
@@ -86,13 +88,39 @@
             <p>El recorrido más popular, lleno de adrenalina y emoción.</p>
             <span>Dificultad: Clase III - IV</span>
           </div>
+
+          <div class="mapa-circuito">
+            <h4>Mapa del Recorrido Alto</h4>
+            <iframe 
+              src="https://www.google.com/maps/d/u/0/embed?mid=1n0aTcO3XBR9eo9UGQ4rzuuBu9MfQLpQ&ehbc=2E312F" 
+              width="100%" 
+              height="300"
+              style="border:0; border-radius:12px; margin-top:15px; box-shadow:0 3px 10px rgba(0,0,0,0.15);" 
+              allowfullscreen 
+              loading="lazy">
+            </iframe>
+          </div>
         </article>
+
+        <!-- CIRCUITO ABRA ANCHA -->
         <article class="card">
           <img src="img/bajo.png" alt="Circuito Abra Ancha para familias">
           <div class="card-content">
             <h3>Circuito Abra Ancha</h3>
-            <p>Ideal para disfrutar en familia.</p>
+            <p>Ideal para disfrutar en familia, con un recorrido más tranquilo y vistas panorámicas.</p>
             <span>Dificultad: Clase II - III</span>
+          </div>
+
+          <div class="mapa-circuito">
+            <h4>Mapa del Recorrido Abra Ancha</h4>
+            <iframe 
+              src="https://www.google.com/maps/d/u/0/embed?mid=1n0aTcO3XBR9eo9UGQ4rzuuBu9MfQLpQ&ehbc=2E312F"
+              width="100%"
+              height="300"
+              style="border:0; border-radius:12px; margin-top:15px; box-shadow:0 3px 10px rgba(0,0,0,0.15);" 
+              allowfullscreen 
+              loading="lazy">
+            </iframe>
           </div>
         </article>
       </div>
@@ -105,46 +133,76 @@
         <figure class="card"><img src="img/exp1.jpg" alt="Balsa navegando rápidos"></figure>
         <figure class="card"><img src="img/exp4.png" alt="Equipo listo para descender"></figure>
         <figure class="card"><img src="img/exp5.png" alt="Guía indicando maniobras"></figure>
+        
+        <figure class="card"><img src="img/exp6.png" alt="Grupo disfrutando del rafting"></figure>
+        <figure class="card"><img src="img/exp7.png" alt="Paisaje del río Aluminé"></figure>
+        <figure class="card"><img src="img/exp8.png" alt="Aventura en el agua"></figure>
+        <figure class="card"><img src="img/exp9.png" alt="Equipo celebrando"></figure>
+        <figure class="card"><img src="img/exp10.png" alt="Rápidos del río Aluminé"></figure>
+
       </div>
     </section>
 
     <!-- Ubicación -->
-    <section id="ubicacion" class="section" data-aos="fade-up">
-      <h2>Ubicación</h2>
-      <p>Nos encontramos en <strong>Abra Ancha</strong>, a pocos kilómetros de Aluminé, Patagonia Argentina.</p>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Abra+Ancha+Rafting,+Neuquén" target="_blank" class="btn-map">Cómo llegar</a>
-      <div id="map"></div>
-    </section>
-  </main>
+   <section id="ubicacion" class="section" data-aos="fade-up">
+  <h2>Ubicación</h2>
+  <p>Nos encontramos en la zona de <strong>Abra Ancha</strong>, a pocos kilómetros de la localidad de Aluminé, en el corazón de la Patagonia Argentina.</p>
 
-  <!-- Footer -->
-  <footer>
-    <p>© <span id="year"></span> Abra Ancha Rafting | Diseñado por @CesarFiad</p>
-  </footer>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Abra+Ancha+Rafting,+Neuquén" 
+     target="_blank" 
+     class="btn-map">
+    📍 Cómo llegar
+  </a>
+
+  <!-- 🔹 Mapa del recorrido Abra Ancha -->
+  <div class="mapa-circuito">
+    <h4>Ruta hacia la base de Abra Ancha Rafting</h4>
+    <iframe 
+      src="https://www.google.com/maps/d/u/0/embed?mid=13PIoxB_PahiFDJ_aTZJlp64LpBgdjrs&ehbc=2E312F"
+      width="100%"
+      height="400"
+      style="border:0; border-radius:12px; margin-top:15px; box-shadow:0 3px 10px rgba(0,0,0,0.15);" 
+      allowfullscreen 
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
 
   <!-- Botonera flotante -->
   <div class="social-toggle">
-    <span class="contact-tooltip">💬 Contáctanos</span>
-    <button id="toggle-btn"><i class="fas fa-share-alt"></i></button>
-    <div class="social-floating" id="social-list" hidden>
-      <a href="https://facebook.com/abraancharafing" class="fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://instagram.com/abraancharafing" class="ig" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="tel:+5492990000000" class="ph"><i class="fas fa-phone"></i></a>
-      <a href="mailto:info@abraancharafing.com" class="em"><i class="fas fa-envelope"></i></a>
-      <a href="https://wa.me/5492990000000" class="wp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <button id="toggle-btn" aria-label="Mostrar redes sociales">
+      <i class="fa-solid fa-comment-dots"></i>
+    </button>
+    <div id="social-list" class="social-floating" hidden>
+      <a href="https://wa.me/5492995123456" target="_blank" class="wp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/" target="_blank" class="ig"><i class="fa-brands fa-instagram"></i></a>
+      <a href="mailto:info@abraancha.com" class="em"><i class="fa-solid fa-envelope"></i></a>
+      <a href="tel:+5492995123456" class="ph"><i class="fa-solid fa-phone"></i></a>
+      <a href="https://www.facebook.com/AbraAnchaRafting" target="_blank" class="fb">
+     <i class="fa-brands fa-facebook-f"></i>
+</a>
+      
+
     </div>
   </div>
 
   <!-- Botón subir -->
-  <button id="btnUp" class="visually-hidden"><i class="fas fa-arrow-up"></i></button>
+  <button id="btnUp" aria-label="Subir arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer>
+    © <span id="year"></span> Abra Ancha Rafting - Patagonia Argentina
+  </footer>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAmNrwJuKCJPoOiR9bPZCQxaxvhH4tXHc&callback=initMap"></script>
 
-  <!-- Si aún no usás Google Maps, dejalo así comentado correctamente -->
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script> -->
-
+  <!-- Fallback -->
   <noscript>Necesitas habilitar JavaScript para ver esta web correctamente.</noscript>
 </body>
 </html>
