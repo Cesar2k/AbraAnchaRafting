@@ -92,9 +92,41 @@ body.loaded #loader{ opacity:0; visibility:hidden; pointer-events:none; }
 .card-content p{color:#555}
 .card-content span{display:block;margin-top:10px;font-weight:700}
 
-/* ---------- Galería ---------- */
-.cards-gallery .card{padding:0}
-.cards-gallery .card img{border:0;height:220px}
+/* ---------- Galería de Experiencias ---------- */
+.cards-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.cards-gallery .card {
+  background: var(--blanco);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cards-gallery .card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.cards-gallery .card img {
+  width: 100%;
+  height: 240px; /* altura uniforme */
+  object-fit: cover; /* mantiene proporción sin deformar */
+  display: block;
+  border: none;
+  border-bottom: 3px solid var(--azul);
+  transition: transform 0.3s ease;
+}
+
+.cards-gallery .card img:hover {
+  transform: scale(1.05);
+}
+
 
 /* ---------- Ubicación ---------- */
 #map{
