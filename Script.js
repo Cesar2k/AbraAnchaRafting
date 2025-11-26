@@ -98,20 +98,16 @@ if (toggleBtn && socialMenu) {
   });
 }
 
-/* Click en "Contacto" abre el menú y WhatsApp */
 if (linkContacto) {
   linkContacto.addEventListener("click", e => {
     e.preventDefault();
 
-    // Abre menú flotante si está oculto
     if (socialMenu.hasAttribute("hidden")) {
       socialMenu.removeAttribute("hidden");
     }
 
-    // Scroll arriba para ver el botón flotante
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Enviar WhatsApp
     const msg = encodeURIComponent(
       "Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios."
     );
@@ -169,9 +165,15 @@ function initMap() {
 window.initMap = initMap;
 
 
-/* ===== LIGHTBOX PRO: swipe + flechas + teclado ===== */
+/* =========================================================
+   LIGHTBOX PRO — Galería + Opiniones
+========================================================= */
 
-const galleryItems = document.querySelectorAll(".cards-gallery img, .gallery-grid img");
+/* 👇 ESTA ES LA LÍNEA CORREGIDA: AHORA INCLUYE .op-img */
+const galleryItems = document.querySelectorAll(
+  ".cards-gallery img, .gallery-grid img, .op-img"
+);
+
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const lightboxClose = document.getElementById("lightbox-close");
@@ -189,12 +191,12 @@ galleryItems.forEach((img, index) => {
   });
 });
 
-// FUNCIÓN PARA MOSTRAR IMÁGENES
+// MOSTRAR IMAGEN ACTUAL
 function showImage() {
   lightboxImg.src = galleryItems[currentIndex].src;
 }
 
-// BOTONES SIGUIENTE / ANTERIOR
+// SIGUIENTE / ANTERIOR
 btnNext.addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % galleryItems.length;
   showImage();
@@ -214,7 +216,7 @@ lightbox.addEventListener("click", e => {
   if (e.target === lightbox) lightbox.classList.add("hidden");
 });
 
-// TECLADO ← → ESC
+// TECLADO
 document.addEventListener("keydown", e => {
   if (lightbox.classList.contains("hidden")) return;
 
@@ -231,7 +233,7 @@ document.addEventListener("keydown", e => {
   }
 });
 
-// SWIPE EN CELU
+// SWIPE EN CELULAR
 let startX = 0;
 
 lightbox.addEventListener("touchstart", e => {
@@ -244,10 +246,8 @@ lightbox.addEventListener("touchend", e => {
 
   if (Math.abs(diff) > 50) {  
     if (diff > 0) {
-      // Swipe izquierda → siguiente
       currentIndex = (currentIndex + 1) % galleryItems.length;
     } else {
-      // Swipe derecha → anterior
       currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
     }
     showImage();
