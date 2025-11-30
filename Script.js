@@ -1,14 +1,14 @@
 console.log("Script cargado correctamente");
 
 /* =========================================================
-   FALLBACK LOADER (si algo falla, igual desaparece)
+   FALLBACK LOADER
 ========================================================= */
 setTimeout(() => {
   document.body.classList.add("loaded");
 }, 3000);
 
 /* =========================================================
-   ON LOAD: LOADER + AOS + FOOTER YEAR + HERO SLIDER
+   ON LOAD
 ========================================================= */
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
@@ -27,7 +27,7 @@ window.addEventListener("load", () => {
 });
 
 /* =========================================================
-   FOOTER YEAR
+   AÑO FOOTER
 ========================================================= */
 function setYear() {
   const y = document.getElementById("year");
@@ -35,7 +35,7 @@ function setYear() {
 }
 
 /* =========================================================
-   HERO – SLIDER AUTOMÁTICO
+   HERO SLIDER
 ========================================================= */
 const hero = document.querySelector(".hero");
 
@@ -56,8 +56,6 @@ function preloadHeroImages() {
 
 function startHeroSlider() {
   if (!hero) return;
-  hero.style.backgroundImage = `url('${fondos[0]}')`;
-
   setInterval(() => {
     fondoIndex = (fondoIndex + 1) % fondos.length;
     hero.style.backgroundImage = `url('${fondos[fondoIndex]}')`;
@@ -90,6 +88,7 @@ if (menuToggle && navMenu) {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", e => {
     const destino = anchor.getAttribute("href");
+
     if (destino && destino.length > 1) {
       const el = document.querySelector(destino);
       if (el) {
@@ -101,7 +100,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* =========================================================
-   BOTONERA FLOTANTE – REDES
+   BOTONERA FLOTANTE
 ========================================================= */
 const toggleBtn = document.getElementById("toggle-btn");
 const socialMenu = document.getElementById("social-list");
@@ -119,12 +118,10 @@ if (toggleBtn && socialMenu) {
 if (linkContacto && socialMenu) {
   linkContacto.addEventListener("click", e => {
     e.preventDefault();
-
     if (socialMenu.hasAttribute("hidden")) {
       socialMenu.removeAttribute("hidden");
       toggleBtn?.setAttribute("aria-expanded", "true");
     }
-
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     const msg = encodeURIComponent("Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios.");
@@ -148,19 +145,20 @@ btnUp?.addEventListener("click", () => {
 });
 
 /* =========================================================
-   LIGHTBOX – GALERÍA + OPINIONES
+   LIGHTBOX – SOLO SI EXISTE GALERÍA
 ========================================================= */
+
 const galleryItems = document.querySelectorAll(".cards-gallery img, .op-img");
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxClose = document.getElementById("lightbox-close");
-const btnPrev = document.getElementById("lightbox-prev");
-const btnNext = document.getElementById("lightbox-next");
+if (galleryItems.length > 0) {
 
-let currentIndex = 0;
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxClose = document.getElementById("lightbox-close");
+  const btnPrev = document.getElementById("lightbox-prev");
+  const btnNext = document.getElementById("lightbox-next");
 
-if (galleryItems.length && lightbox && lightboxImg) {
+  let currentIndex = 0;
 
   galleryItems.forEach((img, index) => {
     img.addEventListener("click", () => {
@@ -199,20 +197,4 @@ if (galleryItems.length && lightbox && lightboxImg) {
     }
   });
 
-  /* Swipe móvil */
-  let startX = 0;
-
-  lightbox.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  });
-
-  lightbox.addEventListener("touchend", e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) currentIndex = (currentIndex + 1) % galleryItems.length;
-      else currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-      showImage();
-    }
-  });
 }
