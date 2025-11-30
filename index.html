@@ -20,7 +20,15 @@
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="img/logo.webp" />
 
-  <!-- Librerías externas -->
+  <!-- Preload recursos críticos -->
+  <link rel="preload" as="image" href="img/fondo.webp">
+  <link rel="preload" as="image" href="img/logo.webp">
+
+  <!-- Fuentes & librerías externas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 
@@ -32,12 +40,12 @@
 
   <!-- Loader -->
   <div id="loader" aria-hidden="true">
-    <img src="img/logo.webp" alt="Cargando Abra Ancha..." width="90" height="90">
+    <img src="img/logo.webp" alt="Cargando sitio Abra Ancha Rafting" width="90" height="90">
   </div>
 
   <!-- Logo fijo -->
-  <a href="#inicio" class="logo-fixed">
-    <img src="img/logo.webp" alt="Logo Abra Ancha Rafting">
+  <a href="#inicio" class="logo-fixed" aria-label="Volver al inicio">
+    <img src="img/logo.webp" alt="Logo Abra Ancha Rafting" width="80" height="80">
   </a>
 
   <!-- Hero -->
@@ -49,9 +57,9 @@
   </header>
 
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Navegación principal">
     <div class="nav-container">
-      <button class="menu-toggle" id="menu-toggle">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-menu">
         <span></span><span></span><span></span>
       </button>
 
@@ -70,38 +78,43 @@
   <main>
 
     <!-- Quiénes Somos -->
-<section id="quienes-somos" class="section" data-aos="fade-up">
-  <h2>¿Quiénes Somos?</h2>
+    <section id="quienes-somos" class="section" data-aos="fade-up">
+      <h2>¿Quiénes Somos?</h2>
 
-  <p>
-    Somos una empresa de rafting en Aluminé dedicada a crear experiencias únicas en el río Aluminé.
-    Este emprendimiento nace de un sueño que, con mucho compromiso, amor y trabajo, se hizo realidad.
-  </p>
+      <p>
+        Somos una empresa de rafting en Aluminé dedicada a crear experiencias únicas en el río Aluminé.
+        Este emprendimiento nace de un sueño que, con mucho compromiso, amor y trabajo, se hizo realidad.
+      </p>
 
-  <p>
-    Abra Ancha Rafting es una empresa familiar nacida a orillas del río Aluminé, creada con la pasión
-    que nos une desde siempre: el río. Formamos un equipo que respira aventura y respeta profundamente
-    este lugar que es nuestro hogar.
-  </p>
+      <p>
+        Abra Ancha Rafting es una empresa familiar nacida a orillas del río Aluminé, creada con la pasión
+        que nos une desde siempre: el río. Formamos un equipo que respira aventura y respeta profundamente
+        este lugar que es nuestro hogar.
+      </p>
 
-  <p>
-    Compartimos cada bajada con alegría, compromiso y ese toque familiar que hace que cada experiencia
-    sea realmente especial. Nuestro equipo de guías locales —certificados y con años de experiencia— 
-    te acompaña a descubrir la magia del Aluminé y a vivir la aventura desde adentro.
-  </p>
+      <p>
+        Compartimos cada bajada con alegría, compromiso y ese toque familiar que hace que cada experiencia
+        sea realmente especial. Nuestro equipo de guías locales —certificados y con años de experiencia— 
+        te acompaña a descubrir la magia del Aluminé y a vivir la aventura desde adentro.
+      </p>
 
-  <p>
-    Ofrecemos dos circuitos pensados para que cada persona encuentre su propia aventura. Ya sea que
-    busques un recorrido tranquilo para disfrutar del paisaje o una bajada con más acción y adrenalina,
-    tenemos un trayecto ideal para vos. Cada circuito te muestra una cara distinta del río y te conecta
-    con su espíritu de una manera única.
-  </p>
-</section>
+      <p>
+        Ofrecemos dos circuitos pensados para que cada persona encuentre su propia aventura. Ya sea que
+        busques un recorrido tranquilo para disfrutar del paisaje o una bajada con más acción y adrenalina,
+        tenemos un trayecto ideal para vos. Cada circuito te muestra una cara distinta del río y te conecta
+        con su espíritu de una manera única.
+      </p>
+    </section>
 
-      <!-- Video -->
+    <!-- Video -->
+    <section class="section" aria-label="Video de presentación" data-aos="fade-up">
+      <h2>Viví la experiencia</h2>
       <video controls playsinline poster="img/alto1.webp" class="video-presentacion">
-        <source src="https://res.cloudinary.com/drpudgwmg/video/upload/v1760722516/videoabraancha_zxhaga.mp4" type="video/mp4">
+        <source src="https://res.cloudinary.com/drpudgwmg/video/upload/q_auto/v1760722516/videoabraancha_zxhaga.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+        <track kind="captions" srclang="es" label="Español">
       </video>
+    </section>
 
     <!-- Circuitos -->
     <section id="circuitos" class="section bg-light" data-aos="fade-up">
@@ -109,61 +122,64 @@
 
       <div class="cards">
 
-<!-- Circuito 1 -->
-<article class="card">
-  <img src="img/alto1.webp" alt="Circuito Aluminé Superior">
-  <div class="card-content">
-    <h3>Circuito Aluminé Superior – Clase III+/IV</h3>
+        <!-- Circuito 1 -->
+        <article class="card">
+          <img src="img/alto1.webp" 
+               alt="Personas realizando rafting en el circuito Aluminé Superior" 
+               width="695" height="463" loading="lazy">
+          <div class="card-content">
+            <h3>Circuito Aluminé Superior – Clase III+/IV</h3>
 
-    <p><strong>Duración:</strong> 2 horas de navegación · 5 horas total de actividad</p>
-    <p><strong>Ubicación:</strong> A 40 km de Aluminé · Ruta Provincial Nº23</p>
-    <p><strong>Temporada:</strong> Octubre – Diciembre</p>
+            <p><strong>Duración:</strong> 2 horas de navegación · 5 horas total de actividad</p>
+            <p><strong>Ubicación:</strong> A 40 km de Aluminé · Ruta Provincial Nº23</p>
+            <p><strong>Temporada:</strong> Octubre – Diciembre</p>
 
-    <p>
-      Experiencia intensa y desafiante, con rápidos clase 3+/4, paisajes de araucarias 
-      y aguas cristalinas en uno de los mejores tramos del río Aluminé.
-    </p>
+            <p>
+              Experiencia intensa y desafiante, con rápidos clase 3+/4, paisajes de araucarias 
+              y aguas cristalinas en uno de los mejores tramos del río Aluminé.
+            </p>
 
-    <h4>Incluye</h4>
-    <ul class="lista-incluye">
-      <li>Equipamiento completo</li>
-      <li>Paquete de fotografías</li>
-      <li>Seguros de ACC</li>
-      <li>Almuerzo al disco</li>
-      <li>Transporte para recupero</li>
-      <li>Guías habilitados</li>
-    </ul>
-  </div>
-</article>
+            <h4>Incluye</h4>
+            <ul class="lista-incluye">
+              <li>Equipamiento completo</li>
+              <li>Paquete de fotografías</li>
+              <li>Seguros de ACC</li>
+              <li>Almuerzo al disco</li>
+              <li>Transporte para recupero</li>
+              <li>Guías habilitados</li>
+            </ul>
+          </div>
+        </article>
 
-<!-- Circuito 2 -->
-<article class="card">
-  <img src="img/bajo.webp" alt="Circuito Abra Ancha">
+        <!-- Circuito 2 -->
+        <article class="card">
+          <img src="img/bajo.webp" 
+               alt="Bote navegando en el circuito Abra Ancha, ideal para familias" 
+               width="5472" height="2713" loading="lazy">
+          <div class="card-content">
+            <h3>Circuito Abra Ancha – Clase II+/III</h3>
 
-  <div class="card-content">
-    <h3>Circuito Abra Ancha – Clase II+/III</h3>
+            <p><strong>Duración:</strong> 1 hora de navegación · 3 horas total</p>
+            <p><strong>Ubicación:</strong> A 10 km de Aluminé · Ruta Nº23</p>
+            <p><strong>Temporada:</strong> Octubre – Mayo</p>
 
-    <p><strong>Duración:</strong> 1 hora de navegación · 3 horas total</p>
-    <p><strong>Ubicación:</strong> A 10 km de Aluminé · Ruta Nº23</p>
-    <p><strong>Temporada:</strong> Octubre – Mayo</p>
+            <p>
+              Ideal para familias, principiantes y grupos. Rápidos emocionantes 
+              clase 2+/3 en un entorno natural único, atravesando un cañadón de cipreses.
+            </p>
 
-    <p>
-      Ideal para familias, principiantes y grupos. Rápidos emocionantes 
-      clase 2+/3 en un entorno natural único, atravesando un cañadón de cipreses.
-    </p>
-
-    <h4>Incluye</h4>
-    <ul class="lista-incluye">
-      <li>Equipamiento completo</li>
-      <li>Paquete de fotografías</li>
-      <li>Seguros de ACC</li>
-      <li>Merienda con tortas fritas</li>
-      <li>Baño y cambiador</li>
-      <li>Estacionamiento privado</li>
-      <li>Guías profesionales</li>
-    </ul>
-  </div>
-</article>
+            <h4>Incluye</h4>
+            <ul class="lista-incluye">
+              <li>Equipamiento completo</li>
+              <li>Paquete de fotografías</li>
+              <li>Seguros de ACC</li>
+              <li>Merienda con tortas fritas</li>
+              <li>Baño y cambiador</li>
+              <li>Estacionamiento privado</li>
+              <li>Guías profesionales</li>
+            </ul>
+          </div>
+        </article>
 
       </div>
     </section>
@@ -175,130 +191,234 @@
 
       <div class="cards cards-gallery">
 
-        <!-- TODAS TUS FOTOS DE CLOUDINARY -->
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187048/altt_3_s5lghx.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187044/altt_2_dwbcdw.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187044/altt_9_pq5qja.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187036/altt_6_g7654n.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187019/abraan_6_zqkhu0.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187012/abraan_8_uai7u4.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187009/abraan_3_yes57c.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187010/abraan_4_pchvti.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187009/abraan_1_nqtaum.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187040/altt_5_nqkx05.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187017/abraan_11_pytdmz.webp"></figure>
-        <figure class="card"><img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764187015/abraan_5_yggs52.webp"></figure>
+        <!-- TODAS LAS FOTOS OPTIMIZADAS CON CLOUDINARY -->
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187048/altt_3_s5lghx.webp"
+               alt="Rafting en aguas blancas en Abra Ancha"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187044/altt_2_dwbcdw.webp"
+               alt="Bote descendiendo un rápido del río Aluminé"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187044/altt_9_pq5qja.webp"
+               alt="Grupo celebrando luego de la bajada en el río"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187036/altt_6_g7654n.webp"
+               alt="Rafting rodeado de montañas y araucarias"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187019/abraan_6_zqkhu0.webp"
+               alt="Equipo de guías de Abra Ancha Rafting"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187012/abraan_8_uai7u4.webp"
+               alt="Participantes equipados listos para navegar el río"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187009/abraan_3_yes57c.webp"
+               alt="Vista aérea del bote cruzando un rápido"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187010/abraan_4_pchvti.webp"
+               alt="Descenso entre rocas y espuma en el río Aluminé"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187009/abraan_1_nqtaum.webp"
+               alt="Inicio del recorrido en Abra Ancha"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187040/altt_5_nqkx05.webp"
+               alt="Bote atravesando un rápido entre piedras"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187017/abraan_11_pytdmz.webp"
+               alt="Grupo sonriendo frente al río luego de la actividad"
+               width="4633" height="3648" loading="lazy">
+        </figure>
+
+        <figure class="card">
+          <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764187015/abraan_5_yggs52.webp"
+               alt="Bote de rafting descendiendo entre olas"
+               width="4633" height="3648" loading="lazy">
+        </figure>
 
       </div>
     </section>
 
     <!-- Opiniones -->
-<section id="opiniones" class="section" data-aos="fade-up">
-  <h2>Opiniones de quienes nos eligieron</h2>
+    <section id="opiniones" class="section" data-aos="fade-up">
+      <h2>Opiniones de quienes nos eligieron</h2>
 
-  <div class="opiniones-container">
-    <div class="opiniones-track">
+      <div class="opiniones-container" aria-label="Opiniones reales de clientes">
+        <div class="opiniones-track">
 
-      <!-- Opiniones (Cloudinary) -->
-      <div class="op-card"><img class="op-img" src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764188710/Opiniones_15_aaqej5.webp"></div>
-      <div class="op-card"><img class="op-img" src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764188708/Opiniones_8_mgjfac.webp"></div>
-      <div class="op-card"><img class="op-img" src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764188705/Opiniones_5_ajbkcr.webp"></div>
-      <div class="op-card"><img class="op-img" src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764188705/Opiniones_6_rcdka9.webp"></div>
-      <div class="op-card"><img class="op-img" src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764188706/Opiniones_7_jesgjp.webp"></div>
-      <div class="op-card"><img class="op-img" src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764188709/Opiniones_13_pq1lbo.webp"></div>
-      <div class="op-card"><img class="op-img" src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764188708/Opiniones_12_a8ka6a.webp"></div>
+          <!-- Opiniones (Cloudinary optimizadas) -->
+          <div class="op-card">
+            <img class="op-img" 
+                 src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_500/v1764188710/Opiniones_15_aaqej5.webp"
+                 alt="Reseña positiva de clientes de Abra Ancha Rafting"
+                 width="1170" height="1169" loading="lazy">
+          </div>
 
-    </div>
-  </div>
-</section>
+          <div class="op-card">
+            <img class="op-img" 
+                 src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_500/v1764188708/Opiniones_8_mgjfac.webp"
+                 alt="Testimonio destacando la seguridad y diversión del rafting"
+                 width="1099" height="1099" loading="lazy">
+          </div>
 
-<!-- Ubicación -->
-<section id="ubicacion" class="section" data-aos="fade-up">
-  <h2>Ubicación</h2>
+          <div class="op-card">
+            <img class="op-img" 
+                 src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_500/v1764188705/Opiniones_5_ajbkcr.webp"
+                 alt="Comentario valorando la atención del equipo de guías"
+                 width="1099" height="1096" loading="lazy">
+          </div>
 
-  <p>
-    Nos encontramos en la zona de <strong>Abra Ancha</strong>, a pocos kilómetros de Aluminé,
-    justo en el punto donde comienza la aventura.
-  </p>
+          <div class="op-card">
+            <img class="op-img" 
+                 src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_500/v1764188705/Opiniones_6_rcdka9.webp"
+                 alt="Reseña mencionando la experiencia familiar en el río"
+                 width="1107" height="1104" loading="lazy">
+          </div>
 
-  <!-- Botón Cómo llegar -->
-  <a 
-    href="https://www.google.com/maps/place/Abra+Ancha+Rafting/@-39.3274676,-70.9220468,17z" 
-    class="btn-map" 
-    target="_blank"
-  >
-    📍 Cómo llegar
-  </a>
+          <div class="op-card">
+            <img class="op-img" 
+                 src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_500/v1764188706/Opiniones_7_jesgjp.webp"
+                 alt="Comentario con recomendación de Abra Ancha Rafting"
+                 width="964" height="963" loading="lazy">
+          </div>
 
-  <!-- Imagen fija estilo preview -->
-  <div class="mapa-circuito">
-    <h4>Nuestra ubicación exacta</h4>
+          <div class="op-card">
+            <img class="op-img" 
+                 src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_500/v1764188709/Opiniones_13_pq1lbo.webp"
+                 alt="Opinión valorando la organización de la actividad"
+                 width="1170" height="1167" loading="lazy">
+          </div>
 
+          <div class="op-card">
+            <img class="op-img" 
+                 src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_500/v1764188708/Opiniones_12_a8ka6a.webp"
+                 alt="Reseña destacando el paisaje y la aventura"
+                 width="920" height="919" loading="lazy">
+          </div>
 
-    <!-- Mapa interactivo -->
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.1604559093837!2d-70.9220468!3d-39.3274676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961247b832452f93%3A0xf28463e7e1a00b5d!2sAbra%20Ancha%20Rafting!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar"
-      width="100%"
-      height="400"
-      style="border:0; border-radius:12px; margin-top:20px;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+        </div>
+      </div>
+    </section>
 
-  </div>
-</section>
+    <!-- Ubicación -->
+    <section id="ubicacion" class="section" data-aos="fade-up">
+      <h2>Ubicación</h2>
 
+      <p>
+        Nos encontramos en la zona de <strong>Abra Ancha</strong>, a pocos kilómetros de Aluminé,
+        justo en el punto donde comienza la aventura.
+      </p>
+
+      <!-- Botón Cómo llegar -->
+      <a 
+        href="https://www.google.com/maps/place/Abra+Ancha+Rafting/@-39.3274676,-70.9220468,17z" 
+        class="btn-map" 
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📍 Cómo llegar
+      </a>
+
+      <!-- Mapa responsivo (solo iframe, sin API pesada) -->
+      <div class="mapa-circuito">
+        <h4>Nuestra ubicación exacta</h4>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.1604559093837!2d-70.9220468!3d-39.3274676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961247b832452f93%3A0xf28463e7e1a00b5d!2sAbra%20Ancha%20Rafting!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar"
+          width="100%"
+          height="400"
+          style="border:0; border-radius:12px; margin-top:20px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de ubicación de Abra Ancha Rafting"
+        ></iframe>
+
+      </div>
+    </section>
 
   </main>
 
   <!-- Botonera flotante -->
-  <div class="social-toggle">
+  <div class="social-toggle" aria-label="Opciones de contacto rápidas">
     <div class="contact-label">Contactanos</div>
 
-    <button id="toggle-btn"><i class="fa-solid fa-comment-dots"></i></button>
+    <button id="toggle-btn" aria-label="Abrir opciones de contacto" aria-expanded="false">
+      <i class="fa-solid fa-comment-dots"></i>
+    </button>
 
     <div id="social-list" class="social-floating" hidden>
-      <a href="https://wa.me/5492995123456" class="wp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="https://instagram.com" class="ig" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="mailto:info@abraancha.com" class="em"><i class="fa-solid fa-envelope"></i></a>
-      <a href="tel:+5492995123456" class="ph"><i class="fa-solid fa-phone"></i></a>
-      <a href="https://facebook.com/AbraAnchaRafting" class="fb" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://wa.me/5492995123456" class="wp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://instagram.com" class="ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="mailto:info@abraancha.com" class="em" aria-label="Enviar correo electrónico">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="tel:+5492995123456" class="ph" aria-label="Llamar por teléfono">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+      <a href="https://facebook.com/AbraAnchaRafting" class="fb" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
     </div>
   </div>
 
-  <!-- Lightbox Galería -->
-<div id="lightbox" class="lightbox hidden">
-  <span id="lightbox-close">&times;</span>
-  <span id="lightbox-prev" class="lightbox-arrow">&#10094;</span>
-  <span id="lightbox-next" class="lightbox-arrow">&#10095;</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-<!-- Lightbox Opiniones -->
-<div id="lightbox-op" class="lightbox hidden">
-  <span id="op-close" class="lightbox-close">&times;</span>
-  <span id="op-prev" class="lightbox-arrow">&#10094;</span>
-  <span id="op-next" class="lightbox-arrow">&#10095;</span>
-  <img id="op-img-big" src="" alt="">
-</div>
+  <!-- Lightbox único (Galería + Opiniones) -->
+  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+    <button id="lightbox-prev" class="lightbox-arrow" aria-label="Imagen anterior">&#10094;</button>
+    <img id="lightbox-img" src="" alt="Imagen ampliada de Abra Ancha Rafting">
+    <button id="lightbox-next" class="lightbox-arrow" aria-label="Imagen siguiente">&#10095;</button>
+  </div>
 
   <!-- Botón subir -->
-  <button id="btnUp"><i class="fa-solid fa-arrow-up"></i></button>
+  <button id="btnUp" aria-label="Subir al inicio">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <!-- Footer -->
-<footer>
-  © <span id="year"></span> Abra Ancha Rafting – Patagonia Argentina  
-  <br>
-  <a href="https://instagram.com/cesarfiad" target="_blank" class="footer-ig">
-    @cesarfiad
-  </a>
-</footer>
+  <footer>
+    © <span id="year"></span> Abra Ancha Rafting – Patagonia Argentina  
+    <br>
+    <a href="https://instagram.com/cesarfiad" target="_blank" rel="noopener noreferrer" class="footer-ig">
+      @cesarfiad
+    </a>
+  </footer>
 
   <!-- Scripts -->
-  <script src="script.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="script.js" defer></script>
 
 </body>
 </html>

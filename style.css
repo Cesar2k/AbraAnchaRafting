@@ -1,17 +1,4 @@
 /* ==========================================================
-   FIX ANTI-SCROLL HORIZONTAL (EVITA PANTALLA BLANCA)
-=========================================================== */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100%;
-}
-
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* ==========================================================
    VARIABLES
 =========================================================== */
 :root {
@@ -28,15 +15,31 @@ html, body {
 /* ==========================================================
    RESET & BASE
 =========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
   color: var(--gris);
   background: var(--gris-fondo);
   line-height: 1.6;
+}
+
+/* Asegura que medios no rompan el layout */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ==========================================================
@@ -74,6 +77,7 @@ body.loaded #loader {
   height: 60px;
   width: auto;
   border-radius: 8px;
+  box-shadow: var(--sombra);
   transition: transform .3s;
 }
 
@@ -85,7 +89,7 @@ body.loaded #loader {
    HERO
 =========================================================== */
 .hero {
-  background: url('img/fondo.jpg') no-repeat center/cover;
+  background: url('img/fondo.webp') no-repeat center/cover;
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -94,7 +98,6 @@ body.loaded #loader {
   color: var(--blanco);
   position: relative;
   isolation: isolate;
-  overflow-x: hidden;
 }
 
 .hero::after {
@@ -106,9 +109,8 @@ body.loaded #loader {
 }
 
 .hero .overlay {
-  padding: 40px;
+  padding: 40px 20px;
   border-radius: 12px;
-  background: transparent;
   text-shadow: 2px 2px 6px rgba(0,0,0,.8);
 }
 
@@ -125,7 +127,7 @@ body.loaded #loader {
 
 .nav-container {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   padding: 10px 16px;
   display: flex;
   justify-content: center;
@@ -137,6 +139,8 @@ body.loaded #loader {
   display: flex;
   gap: 30px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar a {
@@ -151,7 +155,7 @@ body.loaded #loader {
   color: var(--azul-3);
 }
 
-/* Toggle menu (hamburguesa) */
+/* Toggle menú (hamburguesa) */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -174,7 +178,7 @@ body.loaded #loader {
 .section {
   padding: 60px 20px;
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -182,6 +186,16 @@ body.loaded #loader {
   color: var(--azul);
   font-size: 2rem;
   margin-bottom: 15px;
+}
+
+.section p {
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
 }
 
 .bg-light {
@@ -213,16 +227,18 @@ body.loaded #loader {
 
 .card img {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
   border-bottom: 3px solid var(--azul);
 }
 
 .card-content {
-  padding: 16px 20px;
+  padding: 16px 20px 20px;
+  text-align: left;
 }
 
 .card-content h3 {
+  margin-top: 0;
   color: var(--azul-2);
 }
 
@@ -230,16 +246,15 @@ body.loaded #loader {
   color: #555;
 }
 
-.card-content span {
-  margin-top: 10px;
-  display: block;
-  font-weight: 700;
+/* Lista incluye */
+.lista-incluye {
+  padding-left: 20px;
+  margin-top: 8px;
 }
 
 /* ==========================================================
    GALERÍA (GRID)
 =========================================================== */
-.gallery-grid,
 .cards-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -247,7 +262,6 @@ body.loaded #loader {
   margin-top: 25px;
 }
 
-.gallery-grid img,
 .cards-gallery img {
   width: 100%;
   height: 220px;
@@ -258,7 +272,6 @@ body.loaded #loader {
   box-shadow: var(--sombra);
 }
 
-.gallery-grid img:hover,
 .cards-gallery img:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
@@ -274,7 +287,7 @@ body.loaded #loader {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 40px 20px;
   z-index: 3000;
   overflow: hidden;
 }
@@ -290,39 +303,43 @@ body.loaded #loader {
   box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
-#lightbox-close {
+.lightbox-close {
   position: absolute;
-  top: 25px;
-  right: 35px;
-  font-size: 45px;
+  top: 20px;
+  right: 25px;
+  font-size: 42px;
+  background: transparent;
+  border: none;
   color: #fff;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.3s;
 }
 
-#lightbox-close:hover {
-  transform: scale(1.2);
+.lightbox-close:hover {
+  transform: scale(1.15);
 }
 
 /* Flechas lightbox */
 .lightbox-arrow {
   position: absolute;
   top: 50%;
-  font-size: 60px;
+  font-size: 50px;
   color: #fff;
   cursor: pointer;
   user-select: none;
   transform: translateY(-50%);
   padding: 10px;
+  border: none;
+  background: transparent;
   transition: 0.3s;
 }
 
 #lightbox-prev {
-  left: 25px;
+  left: 20px;
 }
 
 #lightbox-next {
-  right: 25px;
+  right: 20px;
 }
 
 .lightbox-arrow:hover {
@@ -331,22 +348,11 @@ body.loaded #loader {
 }
 
 /* ==========================================================
-   UBICACIÓN & MAPAS
-=========================================================== */
-#map {
-  width: 100%;
-  height: 400px;
-  margin-top: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.3);
-}
-
-/* ==========================================================
    VIDEO
 =========================================================== */
 .video-presentacion {
   display: block;
-  margin: 25px auto;
+  margin: 25px auto 0 auto;
   width: min(90vw, 480px);
   aspect-ratio: 4/5;
   object-fit: cover;
@@ -355,16 +361,103 @@ body.loaded #loader {
 }
 
 /* ==========================================================
+   OPINIONES
+=========================================================== */
+#opiniones {
+  text-align: center;
+}
+
+.opiniones-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.opiniones-track {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+.op-card {
+  flex: 0 0 280px;
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+.op-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.opiniones-container::-webkit-scrollbar {
+  height: 8px;
+}
+.opiniones-container::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 4px;
+}
+
+.op-img {
+  cursor: zoom-in;
+}
+
+/* ==========================================================
+   UBICACIÓN — MAPA
+=========================================================== */
+#ubicacion .btn-map {
+  display: inline-block;
+  margin: 15px 0 25px 0;
+  padding: 12px 22px;
+  background: var(--azul);
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.18);
+  transition: background .25s, transform .25s;
+}
+
+#ubicacion .btn-map:hover {
+  background: var(--azul-2);
+  transform: translateY(-2px);
+}
+
+.mapa-circuito {
+  margin-top: 25px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mapa-circuito h4 {
+  color: var(--azul-2);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.mapa-circuito iframe {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  min-height: 380px;
+  border: 0;
+}
+
+/* ==========================================================
    BOTONERA FLOTANTE CONTACTO
 =========================================================== */
-
-/* Contenedor lógico (no fija nada, solo para estructura HTML) */
 .social-toggle {
   position: relative;
   z-index: 1000;
 }
 
-/* Botón azul principal (siempre fijo y no se mueve) */
+/* Botón principal */
 #toggle-btn {
   position: fixed;
   bottom: 80px;
@@ -380,6 +473,9 @@ body.loaded #loader {
   box-shadow: var(--sombra);
   transition: transform .25s, background .25s;
   z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #toggle-btn:hover {
@@ -387,11 +483,11 @@ body.loaded #loader {
   transform: scale(1.08);
 }
 
-/* Texto "Contactanos" alineado con el botón */
+/* Texto "Contactanos" */
 .contact-label {
   position: fixed;
-  bottom: 80px;         /* misma altura que el botón */
-  left: 95px;           /* a la derecha del botón */
+  bottom: 80px;
+  left: 95px;
   background: rgba(0,0,0,.65);
   color: var(--blanco);
   padding: 8px 14px;
@@ -400,7 +496,6 @@ body.loaded #loader {
   font-weight: 500;
   backdrop-filter: blur(4px);
   opacity: .9;
-  animation: ping 2s infinite;
 }
 
 @media (max-width: 450px) {
@@ -409,10 +504,10 @@ body.loaded #loader {
   }
 }
 
-/* Redes flotantes: aparecen arriba del botón, sin moverlo */
+/* Redes flotantes */
 .social-floating {
   position: fixed;
-  bottom: 145px;       /* por encima del botón */
+  bottom: 145px;
   left: 25px;
   display: flex;
   flex-direction: column;
@@ -442,11 +537,11 @@ body.loaded #loader {
   opacity: .92;
 }
 
-/* Colores de cada red */
+/* Colores redes */
 .wp { background: #25D366; }
 .ig { background: #E1306C; }
 .em { background: #444; }
-.ph { background: #0d47a1; }
+.ph { background: var(--azul); }
 .fb { background: #1877F2; }
 
 /* ==========================================================
@@ -488,12 +583,27 @@ footer {
   background: var(--azul);
   color: var(--blanco);
   text-align: center;
-  padding: 16px 0;
+  padding: 18px 0;
   font-size: .95rem;
 }
 
+footer .footer-ig {
+  color: var(--azul-3);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 6px;
+  transition: 0.3s ease;
+}
+
+footer .footer-ig:hover {
+  color: #fff;
+  transform: scale(1.05);
+}
+
 /* ==========================================================
-   RESPONSIVE NAV & LIGHTBOX AJUSTES
+   RESPONSIVE
 =========================================================== */
 @media (max-width: 900px) {
   .menu-toggle {
@@ -519,117 +629,6 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
-  .lightbox-arrow {
-    font-size: 45px;
-  }
-}
-/* ==========================================================
-   OPINIONES — IMÁGENES CUADRADAS
-=========================================================== */
-
-#opiniones {
-  text-align: center;
-}
-
-.opiniones-container {
-  width: 100%;
-  overflow-x: auto;
-  padding: 10px 0;
-}
-
-.opiniones-track {
-  display: flex;
-  gap: 20px;
-  padding: 10px;
-}
-
-.op-card {
-  flex: 0 0 280px;       /* todas del mismo ancho */
-  height: 280px;         /* todas del mismo alto (cuadrado) */
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-  background: #fff;
-}
-
-.op-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* RECORTA Y AJUSTA PERFECTO */
-  display: block;
-  border-radius: 16px;
-}
-
-/* Scroll suave y discreto */
-.opiniones-container::-webkit-scrollbar {
-  height: 8px;
-}
-.opiniones-container::-webkit-scrollbar-thumb {
-  background: #aaa;
-  border-radius: 4px;
-}
-.op-img {
-  cursor: zoom-in;
-}
-
-/* ==========================================================
-   UBICACIÓN — MAPA ESTÁTICO + IFRAME EMBED
-=========================================================== */
-
-#ubicacion {
-  text-align: center;
-}
-
-#ubicacion .btn-map {
-  display: inline-block;
-  margin: 15px 0 25px 0;
-  padding: 12px 22px;
-  background: var(--azul);
-  color: var(--blanco);
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,.18);
-  transition: background .25s, transform .25s;
-}
-
-#ubicacion .btn-map:hover {
-  background: var(--azul-2);
-  transform: translateY(-2px);
-}
-
-.mapa-circuito {
-  margin-top: 25px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.mapa-circuito h4 {
-  color: var(--azul-2);
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-}
-
-/* Imagen previa (Static Map) */
-.mapa-circuito img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: var(--sombra);
-  margin-bottom: 20px;
-}
-
-/* Iframe de mapa */
-.mapa-circuito iframe {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: var(--sombra);
-  min-height: 380px;
-  border: 0;
-}
-
-/* Responsive */
 @media (max-width: 600px) {
   #ubicacion .btn-map {
     padding: 10px 18px;
@@ -639,26 +638,14 @@ footer {
   .mapa-circuito iframe {
     min-height: 300px;
   }
-}
-footer {
-  background: var(--azul);
-  color: var(--blanco);
-  text-align: center;
-  padding: 18px 0;
-  font-size: .95rem;
+
+  .hero {
+    min-height: 80vh;
+  }
 }
 
-footer .footer-ig {
-  color: var(--azul-3);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  display: inline-block;
-  margin-top: 6px;
-  transition: 0.3s ease;
-}
-
-footer .footer-ig:hover {
-  color: #fff;
-  transform: scale(1.05);
+@media (max-width: 480px) {
+  .lightbox-arrow {
+    font-size: 40px;
+  }
 }

@@ -1,7 +1,7 @@
 console.log("Script cargado correctamente");
 
 /* =========================================================
-   LOADER + AOS
+   ON LOAD: LOADER + AOS + AÑO + HERO PRELOAD
 ========================================================= */
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
@@ -16,10 +16,11 @@ window.addEventListener("load", () => {
 
   setYear();
   preloadHeroImages();
+  startHeroSlider();
 });
 
 /* =========================================================
-   AÑO AUTOMÁTICO
+   AÑO AUTOMÁTICO FOOTER
 ========================================================= */
 function setYear() {
   const y = document.getElementById("year");
@@ -30,6 +31,8 @@ function setYear() {
    HERO – CAMBIO AUTOMÁTICO DE FONDOS
 ========================================================= */
 const hero = document.querySelector(".hero");
+
+/* Rutas locales (optimiza estos archivos también en .webp) */
 const fondos = ["img/fondo.webp", "img/alto1.webp", "img/bajo.webp"];
 let fondoIndex = 0;
 
@@ -38,11 +41,15 @@ function preloadHeroImages() {
     const img = new Image();
     img.src = src;
   });
+}
+
+function startHeroSlider() {
+  if (!hero) return;
 
   setInterval(() => {
     fondoIndex = (fondoIndex + 1) % fondos.length;
-    if (hero) hero.style.backgroundImage = `url('${fondos[fondoIndex]}')`;
-  }, 5000);
+    hero.style.backgroundImage = `url('${fondos[fondoIndex]}')`;
+  }, 7000);
 }
 
 /* =========================================================
@@ -57,7 +64,7 @@ if (menuToggle && navMenu) {
     menuToggle.setAttribute("aria-expanded", String(abierto));
   });
 
-  navMenu.querySelectorAll("a").forEach(link => {
+  navMenu.querySelectorAll("a[href^='#']").forEach(link => {
     link.addEventListener("click", () => {
       navMenu.classList.remove("show");
       menuToggle.setAttribute("aria-expanded", "false");
@@ -66,16 +73,18 @@ if (menuToggle && navMenu) {
 }
 
 /* =========================================================
-   SCROLL SUAVE
+   SCROLL SUAVE EN LINKS INTERNOS
 ========================================================= */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", e => {
     const destino = anchor.getAttribute("href");
 
     if (destino && destino.length > 1) {
-      e.preventDefault();
       const el = document.querySelector(destino);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   });
 });
@@ -91,19 +100,23 @@ if (toggleBtn && socialMenu) {
   toggleBtn.addEventListener("click", () => {
     const oculto = socialMenu.hasAttribute("hidden");
 
-    if (oculto) socialMenu.removeAttribute("hidden");
-    else socialMenu.setAttribute("hidden", "");
+    if (oculto) {
+      socialMenu.removeAttribute("hidden");
+    } else {
+      socialMenu.setAttribute("hidden", "");
+    }
 
     toggleBtn.setAttribute("aria-expanded", String(oculto));
   });
 }
 
-if (linkContacto) {
+if (linkContacto && socialMenu) {
   linkContacto.addEventListener("click", e => {
     e.preventDefault();
 
     if (socialMenu.hasAttribute("hidden")) {
       socialMenu.removeAttribute("hidden");
+      toggleBtn?.setAttribute("aria-expanded", "true");
     }
 
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -131,47 +144,10 @@ btnUp?.addEventListener("click", () => {
 });
 
 /* =========================================================
-   GOOGLE MAPS
+   LIGHTBOX – GALERÍA + OPINIONES
 ========================================================= */
-function initMap() {
-  const abraAncha = { lat: -39.2398, lng: -70.9096 };
-  const mapElement = document.getElementById("map");
-
-  if (!mapElement) return;
-
-  const map = new google.maps.Map(mapElement, {
-    zoom: 13,
-    center: abraAncha,
-    disableDefaultUI: false,
-    mapTypeControl: false,
-    streetViewControl: false,
-    styles: [
-      { elementType: "geometry", stylers: [{ color: "#e0f7fa" }] },
-      { elementType: "labels.text.fill", stylers: [{ color: "#00796b" }] },
-      { elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
-      { featureType: "water", elementType: "geometry.fill", stylers: [{ color: "#4fc3f7" }] },
-      { featureType: "road", elementType: "geometry", stylers: [{ color: "#b2dfdb" }] }
-    ]
-  });
-
-  new google.maps.Marker({
-    position: abraAncha,
-    map,
-    title: "Abra Ancha Rafting",
-    icon: { url: "img/abraanchapng.png", scaledSize: new google.maps.Size(48, 48) }
-  });
-}
-
-window.initMap = initMap;
-
-
-/* =========================================================
-   LIGHTBOX PRO — Galería + Opiniones
-========================================================= */
-
-/* 👇 ESTA ES LA LÍNEA CORREGIDA: AHORA INCLUYE .op-img */
 const galleryItems = document.querySelectorAll(
-  ".cards-gallery img, .gallery-grid img, .op-img"
+  ".cards-gallery img, .op-img"
 );
 
 const lightbox = document.getElementById("lightbox");
@@ -182,74 +158,85 @@ const btnNext = document.getElementById("lightbox-next");
 
 let currentIndex = 0;
 
-// ABRIR LIGHTBOX
-galleryItems.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    currentIndex = index;
-    showImage();
-    lightbox.classList.remove("hidden");
+if (galleryItems.length && lightbox && lightboxImg) {
+
+  // Abrir lightbox
+  galleryItems.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showImage();
+      lightbox.classList.remove("hidden");
+      lightbox.setAttribute("aria-hidden", "false");
+    });
   });
-});
 
-// MOSTRAR IMAGEN ACTUAL
-function showImage() {
-  lightboxImg.src = galleryItems[currentIndex].src;
-}
+  // Mostrar imagen actual
+  function showImage() {
+    const item = galleryItems[currentIndex];
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.alt || "Imagen ampliada de Abra Ancha Rafting";
+  }
 
-// SIGUIENTE / ANTERIOR
-btnNext.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % galleryItems.length;
-  showImage();
-});
-
-btnPrev.addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-  showImage();
-});
-
-// CERRAR
-lightboxClose.addEventListener("click", () => {
-  lightbox.classList.add("hidden");
-});
-
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) lightbox.classList.add("hidden");
-});
-
-// TECLADO
-document.addEventListener("keydown", e => {
-  if (lightbox.classList.contains("hidden")) return;
-
-  if (e.key === "ArrowRight") {
+  // Siguiente / anterior
+  btnNext?.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % galleryItems.length;
     showImage();
-  }
-  if (e.key === "ArrowLeft") {
+  });
+
+  btnPrev?.addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
     showImage();
-  }
-  if (e.key === "Escape") {
+  });
+
+  // Cerrar
+  lightboxClose?.addEventListener("click", () => {
     lightbox.classList.add("hidden");
-  }
-});
+    lightbox.setAttribute("aria-hidden", "true");
+  });
 
-// SWIPE EN CELULAR
-let startX = 0;
-
-lightbox.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-lightbox.addEventListener("touchend", e => {
-  let endX = e.changedTouches[0].clientX;
-  let diff = startX - endX;
-
-  if (Math.abs(diff) > 50) {  
-    if (diff > 0) {
-      currentIndex = (currentIndex + 1) % galleryItems.length;
-    } else {
-      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) {
+      lightbox.classList.add("hidden");
+      lightbox.setAttribute("aria-hidden", "true");
     }
-    showImage();
-  }
-});
+  });
+
+  // Teclado
+  document.addEventListener("keydown", e => {
+    if (lightbox.classList.contains("hidden")) return;
+
+    if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      showImage();
+    }
+    if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      showImage();
+    }
+    if (e.key === "Escape") {
+      lightbox.classList.add("hidden");
+      lightbox.setAttribute("aria-hidden", "true");
+    }
+  });
+
+  // Swipe en celular
+  let startX = 0;
+
+  lightbox.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  lightbox.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+      } else {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      }
+      showImage();
+    }
+  });
+}
