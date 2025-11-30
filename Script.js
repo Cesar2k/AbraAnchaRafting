@@ -1,14 +1,7 @@
 console.log("Script cargado correctamente");
 
 /* =========================================================
-   FALLBACK LOADER
-========================================================= */
-setTimeout(() => {
-  document.body.classList.add("loaded");
-}, 3000);
-
-/* =========================================================
-   ON LOAD
+   LOADER SEGURO (PC + MÓVIL)
 ========================================================= */
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
@@ -145,13 +138,11 @@ btnUp?.addEventListener("click", () => {
 });
 
 /* =========================================================
-   LIGHTBOX – SOLO SI EXISTE GALERÍA
+   LIGHTBOX – GALERÍA + OPINIONES
 ========================================================= */
-
 const galleryItems = document.querySelectorAll(".cards-gallery img, .op-img");
 
 if (galleryItems.length > 0) {
-
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxClose = document.getElementById("lightbox-close");
@@ -196,5 +187,4 @@ if (galleryItems.length > 0) {
       lightbox.setAttribute("aria-hidden", "true");
     }
   });
-
 }
