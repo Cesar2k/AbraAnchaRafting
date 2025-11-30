@@ -1,14 +1,14 @@
 console.log("Script cargado correctamente");
 
 /* =========================================================
-   FALLBACK LOADER (asegura que no quede congelado)
+   FALLBACK LOADER (si algo falla, igual desaparece)
 ========================================================= */
 setTimeout(() => {
   document.body.classList.add("loaded");
 }, 3000);
 
 /* =========================================================
-   ON LOAD: LOADER + AOS + AÑO + HERO PRELOAD
+   ON LOAD: LOADER + AOS + FOOTER YEAR + HERO SLIDER
 ========================================================= */
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
@@ -27,7 +27,7 @@ window.addEventListener("load", () => {
 });
 
 /* =========================================================
-   AÑO AUTOMÁTICO FOOTER
+   FOOTER YEAR
 ========================================================= */
 function setYear() {
   const y = document.getElementById("year");
@@ -35,7 +35,7 @@ function setYear() {
 }
 
 /* =========================================================
-   HERO – CAMBIO AUTOMÁTICO DE FONDOS
+   HERO – SLIDER AUTOMÁTICO
 ========================================================= */
 const hero = document.querySelector(".hero");
 
@@ -56,6 +56,8 @@ function preloadHeroImages() {
 
 function startHeroSlider() {
   if (!hero) return;
+  hero.style.backgroundImage = `url('${fondos[0]}')`;
+
   setInterval(() => {
     fondoIndex = (fondoIndex + 1) % fondos.length;
     hero.style.backgroundImage = `url('${fondos[fondoIndex]}')`;
@@ -83,12 +85,11 @@ if (menuToggle && navMenu) {
 }
 
 /* =========================================================
-   SCROLL SUAVE EN LINKS INTERNOS
+   SCROLL SUAVE
 ========================================================= */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", e => {
     const destino = anchor.getAttribute("href");
-
     if (destino && destino.length > 1) {
       const el = document.querySelector(destino);
       if (el) {
@@ -100,7 +101,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* =========================================================
-   BOTONERA FLOTANTE – REDES SOCIALES
+   BOTONERA FLOTANTE – REDES
 ========================================================= */
 const toggleBtn = document.getElementById("toggle-btn");
 const socialMenu = document.getElementById("social-list");
@@ -118,10 +119,12 @@ if (toggleBtn && socialMenu) {
 if (linkContacto && socialMenu) {
   linkContacto.addEventListener("click", e => {
     e.preventDefault();
+
     if (socialMenu.hasAttribute("hidden")) {
       socialMenu.removeAttribute("hidden");
       toggleBtn?.setAttribute("aria-expanded", "true");
     }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     const msg = encodeURIComponent("Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios.");
@@ -130,7 +133,7 @@ if (linkContacto && socialMenu) {
 }
 
 /* =========================================================
-   BOTÓN "SUBIR ARRIBA"
+   BOTÓN SUBIR
 ========================================================= */
 const btnUp = document.getElementById("btnUp");
 
@@ -196,22 +199,7 @@ if (galleryItems.length && lightbox && lightboxImg) {
     }
   });
 
-  document.addEventListener("keydown", e => {
-    if (lightbox.classList.contains("hidden")) return;
-    if (e.key === "ArrowRight") {
-      currentIndex = (currentIndex + 1) % galleryItems.length;
-      showImage();
-    }
-    if (e.key === "ArrowLeft") {
-      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-      showImage();
-    }
-    if (e.key === "Escape") {
-      lightbox.classList.add("hidden");
-      lightbox.setAttribute("aria-hidden", "true");
-    }
-  });
-
+  /* Swipe móvil */
   let startX = 0;
 
   lightbox.addEventListener("touchstart", e => {
