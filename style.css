@@ -84,10 +84,13 @@ body.loaded #loader {
 }
 
 /* ==========================================================
-   HERO
+   HERO (CORREGIDO PARA SLIDER)
 =========================================================== */
 .hero {
-  background: url('https://res.cloudinary.com/dph6jbszd/image/upload/v1764529515/fondo_ljql2d.webp') no-repeat center/cover;
+  background-image: url('https://res.cloudinary.com/dph6jbszd/image/upload/v1764529515/fondo_ljql2d.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: #0c1f37;
   min-height: 90vh;
   display: flex;
@@ -193,7 +196,20 @@ body.loaded #loader {
 }
 
 /* ==========================================================
-   CARDS GENERALES
+   LISTA INCLUYE (AGREGADO)
+=========================================================== */
+.lista-incluye {
+  text-align: left;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.lista-incluye li {
+  margin-bottom: 6px;
+}
+
+/* ==========================================================
+   CARDS – CORRECCIÓN IMPORTANTE
 =========================================================== */
 .cards {
   display: grid;
@@ -202,7 +218,7 @@ body.loaded #loader {
   margin-top: 30px;
 }
 
-.card {
+.cards .card {
   background: var(--blanco);
   border-radius: 12px;
   overflow: hidden;
@@ -211,28 +227,15 @@ body.loaded #loader {
   transition: .25s;
 }
 
-.card:hover {
+.cards .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,.2);
-  will-change: transform;
 }
 
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  aspect-ratio: 4/3;
-  border-bottom: 3px solid var(--azul);
-}
-
-.card-content {
-  padding: 16px 20px 20px;
-  text-align: left;
-}
-
-.card-content h3 {
-  margin-top: 0;
-  color: var(--azul-2);
+.cards-gallery .card {
+  box-shadow: none !important;
+  border-bottom: none !important;
+  padding: 0;
 }
 
 /* ==========================================================
@@ -257,7 +260,6 @@ body.loaded #loader {
 .cards-gallery img:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-  will-change: transform;
 }
 
 /* ==========================================================
@@ -299,7 +301,6 @@ body.loaded #loader {
 
 .lightbox-close:hover {
   transform: scale(1.15);
-  will-change: transform;
 }
 
 .lightbox-arrow {
@@ -320,7 +321,6 @@ body.loaded #loader {
 .lightbox-arrow:hover {
   transform: translateY(-50%) scale(1.15);
   opacity: .85;
-  will-change: transform;
 }
 
 /* ==========================================================
@@ -389,6 +389,14 @@ body.loaded #loader {
   border: 0;
   border-radius: 12px;
   box-shadow: var(--sombra);
+}
+
+/* ==========================================================
+   SOCIAL TOGGLE (FALTABA)
+=========================================================== */
+.social-toggle {
+  position: relative;
+  z-index: 1200;
 }
 
 /* ==========================================================
