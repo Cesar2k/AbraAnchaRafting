@@ -1,4 +1,4 @@
-console.log("✔ Script cargado correctamente");
+console.log("Script cargado correctamente");
 
 /* =========================================================
    LOADER + AOS
@@ -30,7 +30,7 @@ function setYear() {
    HERO – CAMBIO AUTOMÁTICO DE FONDOS
 ========================================================= */
 const hero = document.querySelector(".hero");
-const fondos = ["img/fondo.jpg", "img/alto1.png", "img/bajo.png"];
+const fondos = ["img/fondo.webp", "img/alto1.webp", "img/bajo.webp"];
 let fondoIndex = 0;
 
 function preloadHeroImages() {
