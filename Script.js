@@ -1,6 +1,13 @@
 console.log("Script cargado correctamente");
 
 /* =========================================================
+   FALLBACK LOADER (asegura que no quede congelado)
+========================================================= */
+setTimeout(() => {
+  document.body.classList.add("loaded");
+}, 3000);
+
+/* =========================================================
    ON LOAD: LOADER + AOS + AÑO + HERO PRELOAD
 ========================================================= */
 window.addEventListener("load", () => {
@@ -32,8 +39,12 @@ function setYear() {
 ========================================================= */
 const hero = document.querySelector(".hero");
 
-/* Rutas locales (optimiza estos archivos también en .webp) */
-const fondos = ["img/fondo.webp", "img/alto1.webp", "img/bajo.webp"];
+const fondos = [
+  "https://res.cloudinary.com/dph6jbszd/image/upload/v1764529515/fondo_ljql2d.webp",
+  "https://res.cloudinary.com/dph6jbszd/image/upload/v1764529518/alto1_ilujjn.webp",
+  "https://res.cloudinary.com/dph6jbszd/image/upload/v1764529522/bajo_oa6od1.webp"
+];
+
 let fondoIndex = 0;
 
 function preloadHeroImages() {
@@ -45,7 +56,6 @@ function preloadHeroImages() {
 
 function startHeroSlider() {
   if (!hero) return;
-
   setInterval(() => {
     fondoIndex = (fondoIndex + 1) % fondos.length;
     hero.style.backgroundImage = `url('${fondos[fondoIndex]}')`;
@@ -99,13 +109,8 @@ const linkContacto = document.getElementById("link-contacto");
 if (toggleBtn && socialMenu) {
   toggleBtn.addEventListener("click", () => {
     const oculto = socialMenu.hasAttribute("hidden");
-
-    if (oculto) {
-      socialMenu.removeAttribute("hidden");
-    } else {
-      socialMenu.setAttribute("hidden", "");
-    }
-
+    if (oculto) socialMenu.removeAttribute("hidden");
+    else socialMenu.setAttribute("hidden", "");
     toggleBtn.setAttribute("aria-expanded", String(oculto));
   });
 }
@@ -113,17 +118,13 @@ if (toggleBtn && socialMenu) {
 if (linkContacto && socialMenu) {
   linkContacto.addEventListener("click", e => {
     e.preventDefault();
-
     if (socialMenu.hasAttribute("hidden")) {
       socialMenu.removeAttribute("hidden");
       toggleBtn?.setAttribute("aria-expanded", "true");
     }
-
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    const msg = encodeURIComponent(
-      "Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios."
-    );
+    const msg = encodeURIComponent("Hola Abra Ancha Rafting! Quisiera consultar por disponibilidad y precios.");
     window.open(`https://wa.me/5492995123456?text=${msg}`, "_blank", "noopener");
   });
 }
@@ -146,9 +147,7 @@ btnUp?.addEventListener("click", () => {
 /* =========================================================
    LIGHTBOX – GALERÍA + OPINIONES
 ========================================================= */
-const galleryItems = document.querySelectorAll(
-  ".cards-gallery img, .op-img"
-);
+const galleryItems = document.querySelectorAll(".cards-gallery img, .op-img");
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
@@ -160,7 +159,6 @@ let currentIndex = 0;
 
 if (galleryItems.length && lightbox && lightboxImg) {
 
-  // Abrir lightbox
   galleryItems.forEach((img, index) => {
     img.addEventListener("click", () => {
       currentIndex = index;
@@ -170,14 +168,12 @@ if (galleryItems.length && lightbox && lightboxImg) {
     });
   });
 
-  // Mostrar imagen actual
   function showImage() {
     const item = galleryItems[currentIndex];
     lightboxImg.src = item.src;
     lightboxImg.alt = item.alt || "Imagen ampliada de Abra Ancha Rafting";
   }
 
-  // Siguiente / anterior
   btnNext?.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % galleryItems.length;
     showImage();
@@ -188,7 +184,6 @@ if (galleryItems.length && lightbox && lightboxImg) {
     showImage();
   });
 
-  // Cerrar
   lightboxClose?.addEventListener("click", () => {
     lightbox.classList.add("hidden");
     lightbox.setAttribute("aria-hidden", "true");
@@ -201,10 +196,8 @@ if (galleryItems.length && lightbox && lightboxImg) {
     }
   });
 
-  // Teclado
   document.addEventListener("keydown", e => {
     if (lightbox.classList.contains("hidden")) return;
-
     if (e.key === "ArrowRight") {
       currentIndex = (currentIndex + 1) % galleryItems.length;
       showImage();
@@ -219,7 +212,6 @@ if (galleryItems.length && lightbox && lightboxImg) {
     }
   });
 
-  // Swipe en celular
   let startX = 0;
 
   lightbox.addEventListener("touchstart", e => {
@@ -229,13 +221,9 @@ if (galleryItems.length && lightbox && lightboxImg) {
   lightbox.addEventListener("touchend", e => {
     const endX = e.changedTouches[0].clientX;
     const diff = startX - endX;
-
     if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        currentIndex = (currentIndex + 1) % galleryItems.length;
-      } else {
-        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-      }
+      if (diff > 0) currentIndex = (currentIndex + 1) % galleryItems.length;
+      else currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
       showImage();
     }
   });
