@@ -207,6 +207,19 @@ body.loaded #loader {
 .lista-incluye li {
   margin-bottom: 6px;
 }
+/* ==========================================================
+   LISTA INCLUYE – CENTRADO
+=========================================================== */
+.card-content h4 {
+  text-align: center;
+}
+
+.card-content .lista-incluye {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
 
 /* ==========================================================
    CARDS – CORRECCIÓN IMPORTANTE
