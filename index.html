@@ -18,19 +18,25 @@
 
   <!-- Iconos -->
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dph6jbszd/image/upload/v1764529513/logo_oh8lln.webp" />
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_512/v1764529513/logo_oh8lln.webp" />
 
-  <!-- Preload recursos críticos -->
-  <link rel="preload" as="image" href="https://res.cloudinary.com/dph6jbszd/image/upload/v1764529515/fondo_ljql2d.webp">
-  <link rel="preload" as="image" href="https://res.cloudinary.com/dph6jbszd/image/upload/v1764529513/logo_oh8lln.webp">
+  <!-- Preload hero optimizado -->
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1600/v1764529515/fondo_ljql2d.webp">
 
-  <!-- Fuentes & librerías externas -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <!-- FontAwesome (no bloquea render) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        media="print"
+        onload="this.media='all'">
+
+  <!-- AOS (diferido) -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
   <!-- Estilos -->
   <link rel="stylesheet" href="style.css" />
@@ -40,12 +46,12 @@
 
   <!-- Loader -->
   <div id="loader" aria-hidden="true">
-    <img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764529513/logo_oh8lln.webp" alt="Cargando sitio Abra Ancha Rafting" width="90" height="90">
+    <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_200/v1764529513/logo_oh8lln.webp" alt="Cargando sitio Abra Ancha Rafting" width="90" height="90">
   </div>
 
   <!-- Logo fijo -->
   <a href="#inicio" class="logo-fixed" aria-label="Volver al inicio">
-    <img src="https://res.cloudinary.com/dph6jbszd/image/upload/v1764529513/logo_oh8lln.webp" alt="Logo Abra Ancha Rafting" width="80" height="80">
+    <img src="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_200/v1764529513/logo_oh8lln.webp" alt="Logo Abra Ancha Rafting" width="80" height="80">
   </a>
 
   <!-- Hero -->
@@ -82,38 +88,18 @@
     <section id="quienes-somos" class="section" data-aos="fade-up">
       <h2>¿Quiénes Somos?</h2>
 
-      <p>
-        Somos una empresa de rafting en Aluminé dedicada a crear experiencias únicas en el río Aluminé.
-        Este emprendimiento nace de un sueño que, con mucho compromiso, amor y trabajo, se hizo realidad.
-      </p>
-
-      <p>
-        Abra Ancha Rafting es una empresa familiar nacida a orillas del río Aluminé, creada con la pasión
-        que nos une desde siempre: el río. Formamos un equipo que respira aventura y respeta profundamente
-        este lugar que es nuestro hogar.
-      </p>
-
-      <p>
-        Compartimos cada bajada con alegría, compromiso y ese toque familiar que hace que cada experiencia
-        sea realmente especial. Nuestro equipo de guías locales —certificados y con años de experiencia— 
-        te acompaña a descubrir la magia del Aluminé y a vivir la aventura desde adentro.
-      </p>
-
-      <p>
-        Ofrecemos dos circuitos pensados para que cada persona encuentre su propia aventura. Ya sea que
-        busques un recorrido tranquilo para disfrutar del paisaje o una bajada con más acción y adrenalina,
-        tenemos un trayecto ideal para vos. Cada circuito te muestra una cara distinta del río y te conecta
-        con su espíritu de una manera única.
-      </p>
+      <p>Somos una empresa de rafting en Aluminé dedicada a crear experiencias únicas en el río Aluminé...</p>
     </section>
 
- <!-- Video -->
+<!-- Video -->
 <section class="section" aria-label="Video de presentación" data-aos="fade-up">
   <h2>Viví la experiencia</h2>
-  <video controls playsinline poster="https://res.cloudinary.com/dph6jbszd/image/upload/v1764529518/alto1_ilujjn.webp" class="video-presentacion">
-    <source src="https://res.cloudinary.com/drpudgwmg/video/upload/f_auto,vc_auto,q_auto/v1760722516/videoabraancha_zxhaga.mp4" type="video/mp4">
+  <video controls playsinline loading="lazy"
+         poster="https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_900/v1764529518/alto1_ilujjn.webp"
+         class="video-presentacion">
+    <source src="https://res.cloudinary.com/drpudgwmg/video/upload/f_auto,vc_auto,q_auto/v1760722516/videoabraancha_zxhaga.mp4"
+            type="video/mp4">
     Tu navegador no soporta la reproducción de video.
-    <track kind="captions" srclang="es" label="Español">
   </video>
 </section>
 

@@ -1,9 +1,9 @@
 console.log("Script cargado correctamente");
 
-/* =========================================================
-   LOADER SEGURO (PC + MÓVIL)
-========================================================= */
-window.addEventListener("load", () => {
+/* ============================================
+   LOADER – ahora usa DOMContentLoaded
+================================================ */
+document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("loaded");
 
   if (window.AOS) {
@@ -19,23 +19,23 @@ window.addEventListener("load", () => {
   startHeroSlider();
 });
 
-/* =========================================================
+/* ============================================
    AÑO FOOTER
-========================================================= */
+================================================ */
 function setYear() {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 }
 
-/* =========================================================
-   HERO SLIDER
-========================================================= */
+/* ============================================
+   HERO SLIDER – versiones optimizadas
+================================================ */
 const hero = document.querySelector(".hero");
 
 const fondos = [
-  "https://res.cloudinary.com/dph6jbszd/image/upload/v1764529515/fondo_ljql2d.webp",
-  "https://res.cloudinary.com/dph6jbszd/image/upload/v1764529518/alto1_ilujjn.webp",
-  "https://res.cloudinary.com/dph6jbszd/image/upload/v1764529522/bajo_oa6od1.webp"
+  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1600/v1764529515/fondo_ljql2d.webp",
+  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1600/v1764529518/alto1_ilujjn.webp",
+  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1600/v1764529522/bajo_oa6od1.webp"
 ];
 
 let fondoIndex = 0;
@@ -54,6 +54,8 @@ function startHeroSlider() {
     hero.style.backgroundImage = `url('${fondos[fondoIndex]}')`;
   }, 7000);
 }
+
+/* Menú responsive + botón subir + lightbox (igual que tu código) */
 
 /* =========================================================
    MENÚ RESPONSIVE
