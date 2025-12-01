@@ -33,10 +33,11 @@ function setYear() {
 const hero = document.querySelector(".hero");
 
 const fondos = [
-  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1600/v1764529515/fondo_ljql2d.webp",
-  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1600/v1764529518/alto1_ilujjn.webp",
-  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1600/v1764529522/bajo_oa6od1.webp"
+  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1280/v1764529515/fondo_ljql2d.webp",
+  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1280/v1764529518/alto1_ilujjn.webp",
+  "https://res.cloudinary.com/dph6jbszd/image/upload/f_auto,q_auto,w_1280/v1764529522/bajo_oa6od1.webp"
 ];
+
 
 let fondoIndex = 0;
 
